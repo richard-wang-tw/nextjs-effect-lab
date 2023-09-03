@@ -1,7 +1,8 @@
-const Page = () => (
-  <div className="flex min-h-screen items-center justify-center ">
-    Hello World
-  </div>
-)
+import { redirect } from 'next/navigation'
+
+const Page = () => {
+  //TODO: when user is admin, goto edit page, else show my courses page
+  redirect('/edit/courses')
+}
 
 export default Page

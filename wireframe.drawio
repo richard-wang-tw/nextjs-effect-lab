@@ -1,1 +1,169 @@
-<mxfile host="Electron" modified="2023-08-26T09:25:58.787Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/13.9.9 Chrome/85.0.4183.121 Electron/10.1.5 Safari/537.36" etag="xfOuQ31_Ph6R4TddzN4K" version="13.9.9" type="device"><diagram id="VhWwtlwqrjvGod_Ep1HX" name="第1頁">7Zzfb6M4EMf/Gj+2woDBPEKa3GpXp5NaVXuvbPAmqCRUhGyae7i//cYJpA2eaHPa+gerqm3qDCSQDzP21+MhJJisXv5o8ufln3UhKuJ7xQsJ7ojvcx7BozTsjwbmxUfDoimLo8l7NTyU/4ijkfbWbVmITWc7mtq6rtry+dw4r9drMW/PbHnT1Lvz3b7XVXFmeM4X4uw0pOFhnldC2e1rWbTLzkq9N7t/EuVi2R/a77es8n7vzrBZ5kW9e2MKpiSYNHXdHlurl4moJLxzMLMLW09n1oh1e80Lyl3z+Hj/9OmvL5/vs8c22m5uljdhd31+5NW2+8jd2bb7nkFTb9eFkO/ikSDbLctWPDznc7l1BxcdbMt2VcEzCs3vZVVN6qpu4Pm6XsNOWXcE0bTi5eK50xMRcCVRr0Tb7GGX/gVJB3HfX4DesHu9KkFvW765IEHYGfPOExanN39lBY0O1/9AFyejRBfH15KjushxqpKbRoRzklAyjUmSEh6SKSdpSjJfWlJOeDZauj5GV5tbhqN0S8q8a/1SFznEK0cA7uRd9npCHwlnJXghwLOQZNBg8mnC4BX01wC/A82T0OhpIvHrY/Hra/NCT6F5e3vrHKgQCVfDoIJxgAqsg1KFipOgItug+g7fcVDMPih+VY8PjSlJj5LOI/1UcITDqVEB56vhel/Ol3lTfHURIBuOoAjA2CS/QB1AXeQWsgE3pnKjARbVTBs5bF42EiEXMnaOE+kkqdFOMsBksdIlAl8ODfbuLipplvO8SqtysQZzW8vXbNqmfhI6vPkcf4j0Aij+RBt+puBPnewHooEMwvoBatRxY4Wck7kXhVzMbJPDdBH0kjPCg0Okw2/8u4b8SQjYC3lVOU3G4LgstB3yoaqZ7kZBDknXGCanaibf8wN4L3r88/6FP/gJX01Gwl5DhAcc6WBRTcV00cY0VUQSkKSe7GlTnyTT9145eA+S/kDs+ypJbtRt1eSZk/E+mCRFSNYRnSRF2sAhyytyiA8P/gYeeEcSUAGePAo8qs5p3RX5eVBHSH4yYiZdURXqnWgCcnKyeVgZtI4tHnqiGsGh0QhWVbp1SMNMJfUR5wrQpIa2dBBDOP0mi814FYTRZCVTZzxjSlaiBI1mK2NM0cBgAj6Y9g0YPRL5mLmQZlOW7dV+MDLZD8aIkum4ZQ4CZJS5BhAZf/0oX8nPvv62OcwlThyHG/z3NcnjQH880X2cC4eGj5hYODR2Nowkmfy1AyIlSWg9VH5BTWiLFbVc0uMkSOW0JKrg6Nm3BloL2fKSCxvkkvLQ5pqFxt3JO+cDSHoc1d3aqhdjJMnroNRRxKLHkegxWmDXn4DLUxaOZLFRRagRkyoJx6SpsRJYo5KaX1aETkrqUAlUy4qQYzkuhyW1x1wD+CGpPyT1GCT19aOdtlD5UNSWXQCZVJkV1NzBTHY4UM8cWXjCtLO+4jx+Xc0tO9SV3XUWB0dnjlTpmB2ckfv25DIdyBlfipoE2oFz2BKkpzaKrff2of9N5JAKbgcjfWp/oV3BhpTWmMWmTuY65ZwGMkizQ8A6hw2Zw5nFps7h/rZPKfq5eqIml84T7F7PWV6syrV1WMP8k4+stKEjqDZY2KRsJoqyhX/zettshHzf/c2xLW8Hne2EeNrAf1nS5SWefQGv3G/cl5xaE/AJ9g0Csx+l2J2wbsbHldKIqmCNlmglF4qJD5pP6pSEpPbBsUFlm/W6mNNXc7g8naAecn8E1htqq2Oj/T07oy1kU9N+DJlZmByO4ariTB0rZVOc8doUgD5wWMrevb5OydTrAwdPX78a6LDtzRcsBdP/AA==</diagram></mxfile>
+<mxfile host="65bd71144e">
+    <diagram id="VhWwtlwqrjvGod_Ep1HX" name="wireframe">
+        <mxGraphModel dx="803" dy="534" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="1200" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-46" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="1190" width="390" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-79" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="770" width="390" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-81" value="我的課程" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="770" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-74" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="1500" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="320" width="390" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-2" value="課程活動 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="370" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-10" value="..." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="400" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-13" value="..." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="430" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-19" value="..." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="460" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-22" value="..." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="560" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-28" value="課程管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="320" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-29" value="RichardW" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="320" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-30" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="350" width="130" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-31" value="課程活動 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="360" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-32" value="管理者" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="420" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-35" value="A" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="450" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-37" value="B" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="475" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-38" value="參與者" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="510" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-39" value="C" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="540" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-40" value="D" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="570" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-41" value="2023/1/1 ~ 2024/1/1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="385" width="120" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-42" value="新增課程" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="325" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-43" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="600" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-44" value="儲存 / 新增" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="485" y="630" width="65" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-45" value="取消" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="605" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-47" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="1230" width="330" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-57" value="我的課程" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="1190" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-58" value="RichardW" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="1190" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-72" value="上一週" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="1505" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-73" value="下一週" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="515" y="1505" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-75" value="&amp;nbsp;一&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 二&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 三&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 四&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 五" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="1230" width="330" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-76" value="08:00&lt;br&gt;09:00&lt;br&gt;..&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;17:00" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="1250" width="40" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-78" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="1080" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-80" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="810" width="270" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-82" value="RichardW" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="770" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-83" value="上一週" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="1085" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-84" value="下一週" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="1085" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-85" value="&amp;nbsp;一&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 二&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 三&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 四&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 五" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="810" width="270" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-86" value="08:00&lt;br&gt;09:00&lt;br&gt;..&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;17:00" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="830" width="40" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-87" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="800" width="90" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-88" value="課程名稱" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="875" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-89" value="時間" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="910" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-90" value="講師" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="940" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-92" value="連結" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="970" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-93" value="X" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="810" width="15" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-94" value="/admin" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="290" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-95" value="/edit/course/my-course-1/weeks/20230904" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="738" width="270" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-96" value="/view/courses/my-course-1/weeks/20230904" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="1161" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-98" value="刪除" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="605" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-100" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="1020" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-101" value="儲存 / 新增" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="1055" width="65" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-102" value="取消" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="1030" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="iwrUURkHOKJRBUt6us-h-103" value="刪除" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="1030" width="40" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
