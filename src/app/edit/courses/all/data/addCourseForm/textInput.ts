@@ -1,26 +1,32 @@
 import { Data, Either, pipe } from 'effect'
 
-const validateMinLen = (minLen: number) => (input: string) =>
-  input.length < minLen
-    ? Either.left(
-        ofInvalid({
-          value: input,
-          reason: 'course name length should not be empty',
-        })
-      )
-    : Either.right(input)
+const validateMinLen =
+  (minLen: number) =>
+  (input: string): Either.Either<InvalidTextInput, string> =>
+    input.length < minLen
+      ? Either.left(
+          ofInvalid({
+            value: input,
+            reason: 'course name length should not be empty',
+          })
+        )
+      : Either.right(input)
 
-const validateMaxLen = (maxLen: number) => (input: string) =>
-  input.length > maxLen
-    ? Either.left(
-        ofInvalid({
-          value: input,
-          reason: 'course name length should not greater than 50',
-        })
-      )
-    : Either.right(input)
+const validateMaxLen =
+  (maxLen: number) =>
+  (input: string): Either.Either<InvalidTextInput, string> =>
+    input.length > maxLen
+      ? Either.left(
+          ofInvalid({
+            value: input,
+            reason: 'course name length should not greater than 50',
+          })
+        )
+      : Either.right(input)
 
-const validateWhiteList = (input: string) =>
+const validateWhiteList = (
+  input: string
+): Either.Either<InvalidTextInput, string> =>
   /^[A-Za-z0-9\s]*$/.test(input)
     ? Either.right(input)
     : Either.left(
@@ -54,7 +60,7 @@ export interface InvalidTextInput extends Data.Case {
 
 export const textInputOf =
   ({ minLen, maxLen }: { minLen: number; maxLen: number }) =>
-  (input: string) =>
+  (input: string): InvalidTextInput | ValidTextInput =>
     pipe(
       input,
       validateMinLen(minLen),
