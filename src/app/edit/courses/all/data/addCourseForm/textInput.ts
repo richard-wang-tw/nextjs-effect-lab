@@ -1,4 +1,6 @@
 import { Data, Either, pipe } from 'effect'
+import { atom } from 'jotai'
+import { ChangeEvent } from 'react'
 
 const validateMinLen =
   (minLen: number) =>
@@ -58,8 +60,19 @@ export interface InvalidTextInput extends Data.Case {
   readonly reason: string
 }
 
+export interface TextInputLimit {
+  minLen: number
+  maxLen: number
+}
+
+export const initialCourseName = Data.tagged<InitialTextInput>(
+  'InitialTextInput'
+)({ value: '' })
+
+export const courseNameAtom = atom<TextInput>(initialCourseName)
+
 export const textInputOf =
-  ({ minLen, maxLen }: { minLen: number; maxLen: number }) =>
+  ({ minLen, maxLen }: TextInputLimit) =>
   (input: string): InvalidTextInput | ValidTextInput =>
     pipe(
       input,
@@ -69,3 +82,8 @@ export const textInputOf =
       Either.mapRight(ofValid),
       Either.merge
     )
+
+export const textInputOfEvent =
+  (limit: TextInputLimit) =>
+  (event: ChangeEvent<HTMLInputElement>): InvalidTextInput | ValidTextInput =>
+    textInputOf(limit)(event.target.value)
