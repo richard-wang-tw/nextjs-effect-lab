@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
+import { ServiceProvider } from './components/ServiceProvider'
+import { importSettings } from './data/service/settings'
+import { importTexts } from './data/service/texts'
 import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,19 +30,26 @@ const NavBar = () => (
   </div>
 )
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en" className="light">
-    <body className={inter.className}>
-      <div className="h-screen w-screen schema flex flex-col">
-        <div className="border-b dark:border-gray-600 h-[65px]">
-          <NavBar />
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const settings = await importSettings('default')
+  const texts = await importTexts('en')
+  const constants = { settings, texts }
+
+  return (
+    <html lang="en" className="light">
+      <body className={inter.className}>
+        <ServiceProvider {...constants} />
+        <div className="h-screen w-screen schema flex flex-col">
+          <div className="border-b dark:border-gray-600 h-[65px]">
+            <NavBar />
+          </div>
+          <div className="container mx-auto min-w-screen h-[calc(100vh-65px)]">
+            {children}
+          </div>
         </div>
-        <div className="container mx-auto min-w-screen h-[calc(100vh-65px)]">
-          {children}
-        </div>
-      </div>
-    </body>
-  </html>
-)
+      </body>
+    </html>
+  )
+}
 
 export default RootLayout
