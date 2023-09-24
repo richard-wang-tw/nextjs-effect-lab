@@ -1,6 +1,6 @@
 import { String } from 'effect'
 import { describe, expect, it } from 'vitest'
-import { textInputOf } from '../data/addCourseForm/textInput'
+import { textInputOf } from './textInput'
 
 describe('textInputOf', () => {
   const limit = { minLen: 1, maxLen: 50 }
@@ -38,7 +38,6 @@ describe('textInputOf', () => {
   it('should be invalid when input includes "!"', () => {
     const input = 'He110 w0r1d!'
     const result = textInputOf(limit)(input)
-    console.log(result)
     expect(result._tag).toBe('InvalidTextInput')
   })
 })

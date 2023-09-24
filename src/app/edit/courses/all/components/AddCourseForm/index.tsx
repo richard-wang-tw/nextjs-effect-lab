@@ -1,3 +1,5 @@
+'use client'
+
 import { SideMenu } from '@/components/SideMenu'
 import { FC } from 'react'
 import { CourseName } from './CourseName'
@@ -9,7 +11,7 @@ import { Users } from './Users'
 const AddCourseForm: FC = () => (
   <SideMenu title="Add Course" className="w-[500px]" Footer={Footer}>
     <CourseName />
-    <DateRange />
+    <DateRange now={() => new Date()} />
     <Description />
     <Users />
   </SideMenu>

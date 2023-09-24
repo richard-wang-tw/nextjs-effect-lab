@@ -6,22 +6,22 @@ import {
   InitialTextInput,
   courseNameAtom,
 } from '../../data/addCourseForm/textInput'
-import { CourseName } from './CourseName'
+import { Description } from './Description'
 
 const Initializer = () => {
-  const setCourseName = useSetAtom(courseNameAtom)
+  const setDescription = useSetAtom(courseNameAtom)
   useEffect(() => {
-    setCourseName(InitialTextInput)
+    setDescription(InitialTextInput)
   }, [])
 
   return <></>
 }
 
-describe('<CourseName />', () => {
+describe('<Description />', () => {
   beforeEach(() => {
     ReactDom.unmountComponentAtNode(getContainerEl())
     cy.mount(<Initializer />)
-    cy.mount(<CourseName />)
+    cy.mount(<Description />)
   })
   it('should have empty input in the beginning', () => {
     cy.get('input').should('have.value', '')

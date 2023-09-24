@@ -1,18 +1,31 @@
 'use client'
 
-import { DateRangePicker as FlowbiteDateRangePicker } from '@richard-wang-tw/flowbite-datepicker'
-import { useEffect, useRef } from 'react'
+import { DateRangePicker as Picker } from '@richard-wang-tw/flowbite-datepicker'
+import { FC, useEffect, useRef } from 'react'
 import { Calender } from './icons'
 
-export const DateRangePicker = () => {
+export interface DateRangePickerEvent {
+  start?: Date
+  end?: Date
+}
+
+export interface DateRangePickerProps {
+  onChange?: (event: DateRangePickerEvent) => void
+  id?: string
+}
+
+export const DateRangePicker: FC<DateRangePickerProps> = ({ onChange, id }) => {
   const pickerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    new FlowbiteDateRangePicker(pickerRef.current)
+    new Picker(pickerRef.current, {
+      format: 'yyyy / mm / dd',
+      onChange,
+    })
   })
 
   return (
-    <div ref={pickerRef} className="flex items-center w-full">
+    <div ref={pickerRef} className="flex items-center w-full" id={id}>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <Calender className="text-gray-500 dark:text-gray-400" />

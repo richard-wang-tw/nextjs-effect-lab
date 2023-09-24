@@ -1,16 +1,29 @@
-export const Description = () => (
-  <div>
-    <label
-      data-for="default-input"
-      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-    >
-      Description
-    </label>
-    <input
-      type="text"
-      id="default-input"
-      placeholder="Enter description"
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    />
-  </div>
-)
+import { flow } from 'effect/Function'
+import { useAtom } from 'jotai'
+import {
+  descriptionAtom,
+  textInputOfEvent,
+} from '../../data/addCourseForm/textInput'
+import { ErrorMessage } from './common/ErrorMessage'
+import { Label } from './common/Label'
+import { TextInput } from './common/TextInput'
+
+const limit = { minLen: 1, maxLen: 500 }
+
+export const Description = () => {
+  const [description, setDescription] = useAtom(descriptionAtom)
+
+  return (
+    <div>
+      <Label htmlFor="description">Description</Label>
+      <TextInput
+        value={description.value}
+        onChange={flow(textInputOfEvent(limit), setDescription)}
+        onBlur={flow(textInputOfEvent(limit), setDescription)}
+        id="description"
+        placeholder="Enter description"
+      />
+      <ErrorMessage {...description} />
+    </div>
+  )
+}

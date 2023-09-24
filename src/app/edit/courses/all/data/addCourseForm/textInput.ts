@@ -9,7 +9,7 @@ const validateMinLen =
       ? Either.left(
           ofInvalid({
             value: input,
-            reason: 'course name length should not be empty',
+            reason: `Input length should not less than ${minLen}`,
           })
         )
       : Either.right(input)
@@ -21,7 +21,7 @@ const validateMaxLen =
       ? Either.left(
           ofInvalid({
             value: input,
-            reason: 'course name length should not greater than 50',
+            reason: `Input length should not greater than ${maxLen}`,
           })
         )
       : Either.right(input)
@@ -34,7 +34,8 @@ const validateWhiteList = (
     : Either.left(
         ofInvalid({
           value: input,
-          reason: 'course name should only includes english, number, and space',
+          reason:
+            'Input length should only includes english, number, and space',
         })
       )
 
@@ -65,11 +66,12 @@ export interface TextInputLimit {
   maxLen: number
 }
 
-export const initialCourseName = Data.tagged<InitialTextInput>(
+export const InitialTextInput = Data.tagged<InitialTextInput>(
   'InitialTextInput'
 )({ value: '' })
 
-export const courseNameAtom = atom<TextInput>(initialCourseName)
+export const courseNameAtom = atom<TextInput>(InitialTextInput)
+export const descriptionAtom = atom<TextInput>(InitialTextInput)
 
 export const textInputOf =
   ({ minLen, maxLen }: TextInputLimit) =>
