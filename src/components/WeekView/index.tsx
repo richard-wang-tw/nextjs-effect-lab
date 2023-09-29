@@ -96,13 +96,13 @@ export const WeekView: FC = () => (
       <DatePicker />
       <div className="flex gap-2">
         <Button
-          type="light"
+          theme="light"
           className="w-24 h-10 p-0 flex justify-center items-center"
         >
           <ArrowLeft />
         </Button>
         <Button
-          type="light"
+          theme="light"
           className="w-24 h-10 p-0 flex justify-center items-center"
         >
           <ArrowRight />

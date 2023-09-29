@@ -1,4 +1,3 @@
-import { UserBadge } from './UserBadge'
 import { UserInput } from './UserInput'
 
 export const Users = () => (
@@ -10,9 +9,9 @@ export const Users = () => (
       Users
     </label>
     <div className="flex flex-wrap gap-3 bg-gray-50 rounded-lg border border-gray-300 p-2.5 mb-2 dark:bg-gray-700 dark:border-gray-600">
-      <UserBadge>Richard</UserBadge>
+      {/* <UserBadge>Richard</UserBadge>
       <UserBadge>Alice</UserBadge>
-      <UserBadge>Bob</UserBadge>
+      <UserBadge>Bob</UserBadge> */}
     </div>
     <UserInput />
   </div>

@@ -6,7 +6,7 @@ interface UserBadgeProps extends PropsWithChildren {
 }
 
 export const UserBadge: FC<UserBadgeProps> = ({ children, onClick }) => (
-  <span className="rounded-full bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 dark:bg-blue-900 dark:text-blue-300">
+  <span className="user-badge rounded-full bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 dark:bg-blue-900 dark:text-blue-300">
     {children}
     <button
       type="button"

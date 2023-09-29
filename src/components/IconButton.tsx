@@ -7,7 +7,7 @@ interface IconButtonProps extends PropsWithChildren {
 }
 
 export const IconButton: FC<IconButtonProps> = ({ children, className }) => (
-  <Button type="light" className={twMerge('border-none p-1', className)}>
+  <Button theme="light" className={twMerge('border-none p-1', className)}>
     {children}
   </Button>
 )
