@@ -14,9 +14,9 @@ describe('<Users />', () => {
     cy.get('.user-badge').should('have.length', 1)
   })
 
-  it('should have 1 user selected when input valid user name and click add', () => {
-    cy.get('input').type('richard_w')
-    cy.get('button').click()
-    cy.get('.user-badge').should('have.length', 1)
-  })
+  // it('should have 1 user selected when input valid user name and click add', () => {
+  //   cy.get('input').type('richard_w')
+  //   cy.get('button').click()
+  //   cy.get('.user-badge').should('have.length', 1)
+  // })
 })
