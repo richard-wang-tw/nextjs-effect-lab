@@ -1,7 +1,8 @@
 import { textsAtom } from '@/app/data/service/atoms'
-import { Option, pipe } from 'effect'
+import { Option, ReadonlyArray, pipe } from 'effect'
 import { useAtomValue } from 'jotai'
 import { usersAtom } from '../../../data/addCourseForm/users'
+import { UserBadge } from './UserBadge'
 import { UserInput } from './UserInput'
 
 const Badges = () => {
@@ -10,7 +11,7 @@ const Badges = () => {
     users,
     Option.match({
       onNone: () => <></>,
-      onSome: () => <></>,
+      onSome: ReadonlyArray.map((user, i) => <UserBadge key={i} user={user} />),
     })
   )
 }
@@ -25,7 +26,7 @@ export const Users = () => {
       >
         {texts.addCourseForm.users.title}
       </label>
-      <div className="flex flex-wrap gap-3 bg-gray-50 rounded-lg border border-gray-300 p-2.5 mb-2 dark:bg-gray-700 dark:border-gray-600">
+      <div className="flex flex-wrap gap-3  mb-2 dark:bg-gray-700 dark:border-gray-600">
         <Badges />
       </div>
       <UserInput />

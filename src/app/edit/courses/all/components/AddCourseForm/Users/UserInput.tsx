@@ -1,13 +1,44 @@
 import { constantsAtom } from '@/app/data/service/atoms'
 import { Button } from '@/components/Button'
-import { useAtomValue } from 'jotai'
-import { useState } from 'react'
+import { doNothing } from '@/utils/doNothing'
+import { Option, ReadonlyArray, pipe } from 'effect'
+import { useAtomValue, useSetAtom } from 'jotai'
+import { SetStateAction, useState } from 'react'
+import {
+  Users,
+  administratorOf,
+  usersAtom,
+} from '../../../data/addCourseForm/users'
+
+const addUser = (props: UserInputStates) => {
+  const { setUsers, setInput, input } = props
+  setUsers((users) =>
+    pipe(
+      users,
+      Option.match({
+        onSome: (users) =>
+          Option.some(
+            ReadonlyArray.append(administratorOf({ name: input }))(users)
+          ),
+        onNone: () => Option.some([administratorOf({ name: input })]),
+      })
+    )
+  )
+  setInput('')
+}
+
+interface UserInputStates {
+  setUsers: (props: SetStateAction<Option.Option<Users>>) => void
+  setInput: (users: string) => void
+  input: string
+}
 
 export const UserInput = () => {
   const { texts } = useAtomValue(constantsAtom)
   const [input, setInput] = useState('')
   const { placeholder, addButton } = texts.addCourseForm.users.input
-
+  const setUsers = useSetAtom(usersAtom)
+  const states = { setUsers, setInput, input }
   return (
     <div className="relative">
       <input
@@ -18,9 +49,12 @@ export const UserInput = () => {
         placeholder={placeholder}
         required
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => {}}
+        onKeyDown={(e) => (e.key == 'Enter' ? addUser(states) : doNothing())}
       />
-      <Button className="absolute right-1.5 bottom-1.5 px-2 py-1">
+      <Button
+        className="absolute right-1.5 bottom-1.5 px-2 py-1"
+        onClick={() => addUser(states)}
+      >
         {addButton.text}
       </Button>
     </div>

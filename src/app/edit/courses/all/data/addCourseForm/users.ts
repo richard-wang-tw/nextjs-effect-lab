@@ -19,4 +19,4 @@ export type User = Administrator | Participant
 
 export interface Users extends NonEmptyReadonlyArray<User> {}
 
-export const usersAtom = atom<Option.Option<Users>>(Option.none)
+export const usersAtom = atom<Option.Option<Users>>(Option.none())

@@ -11,15 +11,18 @@ const CLASS_NAMES = {
 interface ButtonProps
   extends React.PropsWithChildren,
     ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string
   theme?: keyof typeof CLASS_NAMES
 }
 
-export const Button: FC<ButtonProps> = ({ className, theme, children }) => (
-  <button
-    type="button"
-    className={twMerge(CLASS_NAMES[theme ?? 'primary'], className)}
-  >
-    {children}
-  </button>
-)
+export const Button: FC<ButtonProps> = (props) => {
+  const { className, theme, children } = props
+  return (
+    <button
+      {...props}
+      type="button"
+      className={twMerge(CLASS_NAMES[theme ?? 'primary'], className)}
+    >
+      {children}
+    </button>
+  )
+}
