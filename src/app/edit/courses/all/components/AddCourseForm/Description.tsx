@@ -1,5 +1,6 @@
+import { constantsAtom } from '@/app/data/service/atoms'
 import { flow } from 'effect/Function'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import {
   descriptionAtom,
   textInputOfEvent,
@@ -8,20 +9,20 @@ import { ErrorMessage } from './common/ErrorMessage'
 import { Label } from './common/Label'
 import { TextInput } from './common/TextInput'
 
-const limit = { minLen: 1, maxLen: 500 }
-
 export const Description = () => {
   const [description, setDescription] = useAtom(descriptionAtom)
-
+  const { texts, settings } = useAtomValue(constantsAtom)
+  const { title, placeholder } = texts.addCourseForm.description
+  const { limit } = settings.courseDescription
   return (
     <div>
-      <Label htmlFor="description">Description</Label>
+      <Label htmlFor="course-description">{title}</Label>
       <TextInput
         value={description.value}
         onChange={flow(textInputOfEvent(limit), setDescription)}
         onBlur={flow(textInputOfEvent(limit), setDescription)}
-        id="description"
-        placeholder="Enter description"
+        id="course-description"
+        placeholder={placeholder}
       />
       <ErrorMessage {...description} />
     </div>

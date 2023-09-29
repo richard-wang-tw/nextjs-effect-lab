@@ -1,5 +1,6 @@
+import { Clock } from '@/app/data/service/clock'
 import { DateRangePickerEvent } from '@/components/DateRangePicker'
-import { Data, Either, Option, pipe } from 'effect'
+import { Context, Data, Effect, Either, Option, pipe } from 'effect'
 import { atom } from 'jotai'
 
 const ofValid = ({ start, end }: { start: Date; end: Date }) =>
@@ -40,7 +41,13 @@ export const initialDateRange =
 
 export const dateRangeAtom = atom<DateRange>(initialDateRange)
 
-export const dateRangeOf = (now: Date) => (event: DateRangePickerEvent) =>
+export interface Random {
+  readonly next: Effect.Effect<never, never, number>
+}
+
+export const Random = Context.Tag<Random>()
+
+export const dateRangeOf = (clock: Clock) => (event: DateRangePickerEvent) =>
   pipe(
     {
       start: Option.fromNullable(event.start),
@@ -52,7 +59,7 @@ export const dateRangeOf = (now: Date) => (event: DateRangePickerEvent) =>
     ),
     Either.flatMap((event) => {
       const { start, end } = event
-      return now < start && start < end
+      return clock.now() < start && start < end
         ? Either.right(event)
         : Either.left('Please follow today < start date < end date' as const)
     }),

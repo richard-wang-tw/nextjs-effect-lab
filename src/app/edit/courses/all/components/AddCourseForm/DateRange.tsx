@@ -11,17 +11,19 @@ import { Label } from './common/Label'
 
 export const DateRange: FC = () => {
   const [dateRange, setDateRange] = useAtom(dateRangeAtom)
-  const { clock } = useAtomValue(serviceAtom)
+  const { clock, texts } = useAtomValue(serviceAtom)
+  const { title, placeholder } = texts.addCourseForm.dateRange
   return (
     <div>
-      <Label htmlFor={'date-range-picker'}>Date Range</Label>
+      <Label htmlFor={'date-range-picker'}>{title}</Label>
       <DateRangePicker
         id={'date-range-picker'}
-        onChange={flow(dateRangeOf(clock.now()), (newDateRange) =>
+        onChange={flow(dateRangeOf(clock), (newDateRange) =>
           Equal.equals(newDateRange, dateRange)
             ? doNothing()
             : setDateRange(newDateRange)
         )}
+        placeholder={placeholder}
       />
       <ErrorMessage {...dateRange} />
     </div>

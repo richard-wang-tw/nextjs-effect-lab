@@ -5,4 +5,10 @@ export const settings = {
       minLen: 50,
     },
   },
+  courseDescription: {
+    limit: {
+      maxLen: 1,
+      minLen: 50,
+    },
+  },
 }

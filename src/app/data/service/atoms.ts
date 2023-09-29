@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 import { Constants, Functions, Service } from '.'
-import { Clock } from './clock'
+import { Clock, clock } from './clock'
 import { Settings } from './settings'
 import { settings } from './settings/default'
 import { Texts } from './texts'
@@ -10,7 +10,7 @@ export const settingsAtom = atom<Settings>(settings)
 
 export const textsAtom = atom<Texts>(texts)
 
-export const clockAtom = atom<Clock>({ now: () => new Date() })
+export const clockAtom = atom<Clock>(clock)
 
 export const functionsAtom = atom(
   (get): Functions => ({

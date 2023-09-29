@@ -12,9 +12,17 @@ export interface DateRangePickerEvent {
 export interface DateRangePickerProps {
   onChange?: (event: DateRangePickerEvent) => void
   id?: string
+  placeholder?: {
+    start: string
+    end: string
+  }
 }
 
-export const DateRangePicker: FC<DateRangePickerProps> = ({ onChange, id }) => {
+export const DateRangePicker: FC<DateRangePickerProps> = ({
+  onChange,
+  id,
+  placeholder,
+}) => {
   const pickerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -34,7 +42,7 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({ onChange, id }) => {
           name="start"
           type="text"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Select start date"
+          placeholder={placeholder?.start}
         />
       </div>
       <span className="mx-4 text-gray-500">to</span>
@@ -47,7 +55,7 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({ onChange, id }) => {
           name="end"
           type="text"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Select end date"
+          placeholder={placeholder?.end}
         />
       </div>
     </div>
