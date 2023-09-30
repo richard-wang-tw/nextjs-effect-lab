@@ -1,13 +1,7 @@
 import { Match, pipe } from 'effect'
 import { FC } from 'react'
-import {
-  DateRange,
-  InvalidDateRange,
-} from '../../../data/addCourseForm/dateRange'
-import {
-  InvalidTextInput,
-  TextInput,
-} from '../../../data/addCourseForm/textInput'
+import { DateRange, InvalidDateRange } from '../date-range/data'
+import { InvalidTextInput, TextInput } from './text-input/data'
 
 const Displayed: FC<InvalidTextInput | InvalidDateRange> = ({ reason }) => (
   <p className={'error-message h-5 text-sm text-red-600 dark:text-red-500'}>

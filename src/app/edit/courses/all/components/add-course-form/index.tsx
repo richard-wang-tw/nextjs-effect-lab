@@ -4,11 +4,11 @@ import { textsAtom } from '@/app/data/service/atoms'
 import { SideMenu } from '@/components/SideMenu'
 import { useAtomValue } from 'jotai'
 import { FC } from 'react'
-import { CourseName } from './CourseName'
-import { DateRange } from './DateRange'
-import { Description } from './Description'
-import { Footer } from './Footer'
-import { Users } from './Users'
+import { CourseName } from './course-name'
+import { DateRange } from './date-range'
+import { Description } from './description'
+import { Footer } from './footer'
+import { Users } from './users'
 
 const AddCourseForm: FC = () => {
   const texts = useAtomValue(textsAtom)

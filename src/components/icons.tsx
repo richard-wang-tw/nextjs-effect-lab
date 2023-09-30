@@ -1,17 +1,16 @@
-import { FC } from 'react'
+import { FC, SVGProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export interface IconProps {
-  className?: string
-}
+export interface IconProps extends SVGProps<SVGSVGElement> {}
 
-export const Calender: FC<IconProps> = ({ className }) => (
+export const Calender: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       fill="currentColor"
@@ -20,13 +19,14 @@ export const Calender: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const TrashBin: FC<IconProps> = ({ className }) => (
+export const TrashBin: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 18 20"
+    viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -38,13 +38,14 @@ export const TrashBin: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const CalenderEdit: FC<IconProps> = ({ className }) => (
+export const CalenderEdit: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -56,13 +57,14 @@ export const CalenderEdit: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const FileEdit: FC<IconProps> = ({ className }) => (
+export const FileEdit: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -74,13 +76,14 @@ export const FileEdit: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const PlusCircle: FC<IconProps> = ({ className }) => (
+export const PlusCircle: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -92,13 +95,14 @@ export const PlusCircle: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const Fork: FC<IconProps> = ({ className }) => (
+export const Fork: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 14 14"
+    viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -109,13 +113,14 @@ export const Fork: FC<IconProps> = ({ className }) => (
     />
   </svg>
 )
-export const ArrowLeft: FC<IconProps> = ({ className }) => (
+export const ArrowLeft: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 14 10"
+    viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"
@@ -127,13 +132,14 @@ export const ArrowLeft: FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const ArrowRight: FC<IconProps> = ({ className }) => (
+export const ArrowRight: FC<IconProps> = (props) => (
   <svg
-    className={twMerge('w-4 h-4', className)}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 14 10"
+    viewBox="0 0 20 20"
+    {...props}
+    className={twMerge('w-4 h-4', props.className)}
   >
     <path
       stroke="currentColor"

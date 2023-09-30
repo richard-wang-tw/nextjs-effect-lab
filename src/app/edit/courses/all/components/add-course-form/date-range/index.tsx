@@ -5,9 +5,9 @@ import { Equal } from 'effect'
 import { flow } from 'effect/Function'
 import { useAtom, useAtomValue } from 'jotai'
 import { FC } from 'react'
-import { dateRangeAtom, dateRangeOf } from '../../data/addCourseForm/dateRange'
-import { ErrorMessage } from './common/ErrorMessage'
-import { Label } from './common/Label'
+import { ErrorMessage } from '../common/error-message'
+import { Label } from '../common/label'
+import { dateRangeAtom, dateRangeOf } from './data'
 
 export const DateRange: FC = () => {
   const [dateRange, setDateRange] = useAtom(dateRangeAtom)

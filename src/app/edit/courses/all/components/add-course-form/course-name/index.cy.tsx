@@ -2,16 +2,13 @@ import { getContainerEl } from 'cypress/react18'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import ReactDom from 'react-dom'
-import {
-  InitialTextInput,
-  courseNameAtom,
-} from '../../data/addCourseForm/textInput'
-import { CourseName } from './CourseName'
+import { CourseName } from '.'
+import { courseNameAtom, initialTextInput } from '../common/text-input/data'
 
 const Initializer = () => {
   const setCourseName = useSetAtom(courseNameAtom)
   useEffect(() => {
-    setCourseName(InitialTextInput)
+    setCourseName(initialTextInput)
   }, [])
 
   return <></>

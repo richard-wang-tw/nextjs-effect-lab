@@ -1,12 +1,13 @@
 import { Fork } from '@/components/icons'
 import { FC } from 'react'
-import { User } from '../../../data/addCourseForm/users'
+import { User } from './data'
 
 interface UserBadgeProps {
   user: User
+  deleteUser: (user: User) => void
 }
 
-export const UserBadge: FC<UserBadgeProps> = ({ user }) => (
+export const UserBadge: FC<UserBadgeProps> = ({ user, deleteUser }) => (
   <span className="user-badge rounded-full bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 dark:bg-blue-900 dark:text-blue-300">
     {user.name}
     <button
@@ -14,10 +15,9 @@ export const UserBadge: FC<UserBadgeProps> = ({ user }) => (
       className="inline-flex items-center p-1 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
       data-dismiss-target="#badge-dismiss-default"
       aria-label="Remove"
-      onClick={() => {}}
+      onClick={() => deleteUser(user)}
     >
       <Fork className="w-2 h-2" />
-      <span className="sr-only">Remove badge</span>
     </button>
   </span>
 )

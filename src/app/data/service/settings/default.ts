@@ -1,14 +1,14 @@
 export const settings = {
   courseName: {
     limit: {
-      maxLen: 1,
-      minLen: 50,
+      maxLen: 50,
+      minLen: 1,
     },
   },
   courseDescription: {
     limit: {
-      maxLen: 1,
-      minLen: 50,
+      maxLen: 500,
+      minLen: 1,
     },
   },
 }

@@ -2,8 +2,7 @@ import { Option } from 'effect'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { Users } from '.'
-import { usersAtom } from '../../../data/addCourseForm/users'
-
+import { usersAtom } from './data'
 const Initializer = () => {
   const setUsersAtom = useSetAtom(usersAtom)
   useEffect(() => {
@@ -45,5 +44,11 @@ describe('<Users />', () => {
     cy.get('.user-badge').should('have.length', 2)
     cy.get('.user-badge').eq(0).should('contain', 'richard_w')
     cy.get('.user-badge').eq(1).should('contain', 'eric_s')
+  })
+
+  it('should have no user selected when select 1 user and click user badge delete button', () => {
+    cy.get('input').type('richard_w{Enter}')
+    cy.get('.user-badge button').click()
+    cy.get('.user-badge').should('not.exist')
   })
 })

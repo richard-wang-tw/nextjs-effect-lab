@@ -4,11 +4,8 @@ import { getContainerEl } from 'cypress/react18'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import ReactDom from 'react-dom'
-import {
-  dateRangeAtom,
-  initialDateRange,
-} from '../../data/addCourseForm/dateRange'
-import { DateRange } from './DateRange'
+import { DateRange } from '.'
+import { dateRangeAtom, initialDateRange } from './data'
 
 const Initializer = () => {
   const setDateRange = useSetAtom(dateRangeAtom)

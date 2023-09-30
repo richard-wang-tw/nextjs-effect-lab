@@ -1,7 +1,7 @@
 import { testClock } from '@/app/data/service/clock'
 import { DateRangePickerEvent } from '@/components/DateRangePicker'
 import { describe, expect, it } from 'vitest'
-import { dateRangeOf } from './dateRange'
+import { dateRangeOf } from './data'
 
 describe('dateRangeOf', () => {
   it('should be valid when now < start < end', () => {

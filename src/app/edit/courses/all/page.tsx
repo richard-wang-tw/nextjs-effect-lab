@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import AddCourseForm from './components/AddCourseForm'
 import { TableView } from './components/CoursesTable'
+import AddCourseForm from './components/add-course-form'
 
 const Page: FC = () => (
   <div className="flex w-full h-full">
