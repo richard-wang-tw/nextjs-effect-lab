@@ -1,12 +1,11 @@
-import { Option } from 'effect'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { Users } from '.'
-import { usersAtom } from './data'
+import { UsersField, usersFieldAtom } from './data'
 const Initializer = () => {
-  const setUsersAtom = useSetAtom(usersAtom)
+  const setUsers = useSetAtom(usersFieldAtom)
   useEffect(() => {
-    setUsersAtom(Option.none())
+    setUsers(UsersField.init)
   }, [])
   return <></>
 }

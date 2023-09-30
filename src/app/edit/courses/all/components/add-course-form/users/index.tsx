@@ -1,25 +1,22 @@
 import { textsAtom } from '@/app/data/service/atoms'
-import { Option, ReadonlyArray, pipe } from 'effect'
+import { ReadonlyArray, pipe } from 'effect'
 import { flow } from 'effect/Function'
 import { useAtom, useAtomValue } from 'jotai'
-import { deleteUser, usersAtom } from './data'
+import { UsersField, usersFieldAtom } from './data'
 import { UserBadge } from './user-badge'
 import { UserInput } from './user-input'
 
 const Badges = () => {
-  const [users, setUsers] = useAtom(usersAtom)
+  const [users, setUsers] = useAtom(usersFieldAtom)
   return pipe(
-    users,
-    Option.match({
-      onNone: () => <></>,
-      onSome: ReadonlyArray.map((user, i) => (
-        <UserBadge
-          key={i}
-          user={user}
-          deleteUser={flow(deleteUser, setUsers)}
-        />
-      )),
-    })
+    users.selected,
+    ReadonlyArray.map((user, i) => (
+      <UserBadge
+        key={i}
+        user={user}
+        deleteUser={flow(UsersField.deleteUser, setUsers)}
+      />
+    ))
   )
 }
 

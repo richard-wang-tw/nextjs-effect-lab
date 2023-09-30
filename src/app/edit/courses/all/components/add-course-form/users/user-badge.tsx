@@ -1,6 +1,6 @@
 import { Fork } from '@/components/icons'
+import { User } from '@/data/user'
 import { FC } from 'react'
-import { User } from './data'
 
 interface UserBadgeProps {
   user: User

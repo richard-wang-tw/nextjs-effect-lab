@@ -90,6 +90,6 @@ export const textInputOf =
       validateMinLen(minLen),
       Either.flatMap(validateMaxLen(maxLen)),
       Either.flatMap(validateWhiteList),
-      Either.mapRight(ofValid),
+      Either.map(ofValid),
       Either.merge
     )
