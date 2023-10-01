@@ -1,11 +1,11 @@
-import { SideMenu } from '@/components/SideMenu'
-import { WeekView } from '@/components/WeekView'
+import { SideMenu } from '@/app/components/side-menu'
+import { WeekView } from '@/app/components/week-view'
 import { FC } from 'react'
-import { DateAndTime } from './components/DateAndTime'
-import { Description } from './components/Description'
-import { Footer } from './components/Footer'
-import { Lecturer } from './components/Lecturer'
-import { Links } from './components/Links'
+import { DateAndTime } from './components/date-and-time'
+import { Description } from './components/description'
+import { Footer } from './components/footer'
+import { Lecturer } from './components/lecturer'
+import { Links } from './components/links'
 
 const Page: FC = () => (
   <div className="flex w-full h-full">

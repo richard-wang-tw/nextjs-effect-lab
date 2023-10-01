@@ -1,9 +1,9 @@
+import { importSettings } from '@/service/settings'
+import { importTexts } from '@/service/texts'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
-import { ServiceProvider } from './components/ServiceProvider'
-import { importSettings } from './data/service/settings'
-import { importTexts } from './data/service/texts'
+import { ServiceProvider } from './components/service-provider'
 import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 

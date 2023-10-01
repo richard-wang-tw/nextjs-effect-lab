@@ -1,5 +1,5 @@
-import { IconButton } from '@/components/IconButton'
-import { Calender } from '@/components/icons'
+import { IconButton } from '@/app/components/icon-button'
+import { Calender } from '@/app/components/icons'
 import { FC } from 'react'
 
 interface RowProps {
