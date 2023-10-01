@@ -1,5 +1,5 @@
-import { Clock } from '@/app/data/service/clock'
 import { DateRangePickerEvent } from '@/components/DateRangePicker'
+import { Clock } from '@/service/clock'
 import { Context, Data, Effect, Either, Option, pipe } from 'effect'
 import { atom } from 'jotai'
 

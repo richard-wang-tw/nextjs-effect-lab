@@ -1,4 +1,4 @@
-import { SetState } from '@/utils/hooks'
+import { SetState } from '@/lib/utils/hooks'
 import { flow } from 'effect/Function'
 import { FC } from 'react'
 import { TextInput as TextInputData, TextInputLimit, textInputOf } from './data'

@@ -1,4 +1,4 @@
-import { textsAtom } from '@/app/data/service/atoms'
+import { textsAtom } from '@/service/atoms'
 import { ReadonlyArray, pipe } from 'effect'
 import { flow } from 'effect/Function'
 import { useAtom, useAtomValue } from 'jotai'

@@ -1,5 +1,5 @@
-import { testClock } from '@/app/data/service/clock'
 import { DateRangePickerEvent } from '@/components/DateRangePicker'
+import { testClock } from '@/service/clock'
 import { describe, expect, it } from 'vitest'
 import { dateRangeOf } from './data'
 

@@ -1,5 +1,5 @@
-import { clockAtom } from '@/app/data/service/atoms'
-import { testClock } from '@/app/data/service/clock'
+import { clockAtom } from '@/service/atoms'
+import { testClock } from '@/service/clock'
 import { getContainerEl } from 'cypress/react18'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'

@@ -1,4 +1,4 @@
-import { constantsAtom } from '@/app/data/service/atoms'
+import { constantsAtom } from '@/service/atoms'
 import { useAtom, useAtomValue } from 'jotai'
 import { ErrorMessage } from '../common/error-message'
 import { Label } from '../common/label'

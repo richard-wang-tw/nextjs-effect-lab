@@ -1,7 +1,7 @@
 'use client'
 
-import { textsAtom } from '@/app/data/service/atoms'
 import { SideMenu } from '@/components/SideMenu'
+import { textsAtom } from '@/service/atoms'
 import { useAtomValue } from 'jotai'
 import { FC } from 'react'
 import { CourseName } from './course-name'
