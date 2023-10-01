@@ -1,6 +1,6 @@
 import { serviceAtom } from '@/app/data/service/atoms'
 import { DateRangePicker } from '@/components/DateRangePicker'
-import { doNothing } from '@/utils/doNothing'
+import { doNothing } from '@/lib/utils/doNothing'
 import { Equal } from 'effect'
 import { flow } from 'effect/Function'
 import { useAtom, useAtomValue } from 'jotai'

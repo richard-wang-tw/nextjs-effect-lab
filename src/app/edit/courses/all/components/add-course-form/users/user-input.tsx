@@ -1,6 +1,6 @@
 import { constantsAtom } from '@/app/data/service/atoms'
 import { Button } from '@/components/Button'
-import { doNothing } from '@/utils/doNothing'
+import { doNothing } from '@/lib/utils/doNothing'
 import { Effect, pipe } from 'effect'
 import { useAtom, useAtomValue } from 'jotai'
 import { ErrorMessage } from '../common/error-message'

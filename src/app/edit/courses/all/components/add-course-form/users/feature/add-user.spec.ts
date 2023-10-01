@@ -4,44 +4,44 @@ import { UsersField } from '../data'
 import { addUser } from './add-user'
 
 describe('addUser', () => {
-  it('should return NotTargetEvent when event has key and key is not Enter', async () => {
+  it('should return Nothing when event has key and key is not Enter', async () => {
     const event = { key: 'xxx' }
     const result = await pipe(
       addUser(event)(UsersField.init),
       Effect.merge,
       Effect.runPromise
     )
-    expect(result).toBe('NotTargetEvent')
+    expect(result).toBe('Nothing')
   })
 
-  it('should return Option.Some when event has key and key is Enter', async () => {
+  it('should return UsersField when event has key and key is Enter', async () => {
     const event = { key: 'Enter' }
     const result = await pipe(
       addUser(event)(UsersField.init),
       Effect.merge,
       Effect.runPromise
     )
-    expect(result).not.toBe('NotTargetEvent')
+    expect(result).not.toBe('Nothing')
   })
 
-  it('should return Option.Some when event has no key', async () => {
+  it('should return UsersField when event has no key', async () => {
     const event = {}
     const result = await pipe(
       addUser(event)(UsersField.init),
       Effect.merge,
       Effect.runPromise
     )
-    expect(result).not.toBe('NotTargetEvent')
+    expect(result).not.toBe('Nothing')
   })
 
-  it('should return UnexpectedError when mock service is off', async () => {
+  it('should return UnexpectedRequestError when mock service is off', async () => {
     const event = {}
     const result = await pipe(
       addUser(event)(UsersField.init),
       Effect.merge,
       Effect.runPromise
     )
-    expect(result).not.toBe('NotTargetEvent')
+    expect(result).not.toBe('Nothing')
     const error = (result as UsersField).error
     expect(error._tag).toBe('UnexpectedRequestError')
   })
