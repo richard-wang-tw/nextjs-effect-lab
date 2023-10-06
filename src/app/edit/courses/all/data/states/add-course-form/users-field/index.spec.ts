@@ -1,24 +1,14 @@
 import { Nothing } from '@/app/data/events'
-import {
-  getUser200Invalid,
-  getUser404,
-  getUser500,
-} from '@/msw/resolvers/get-user'
+import { getUsersByNameHandler } from '@/msw/endpoints/get-user-by-name'
 import { initServer } from '@/msw/server'
 import { Effect, Equal, Option, pipe } from 'effect'
-import { rest } from 'msw'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { UsersField } from '.'
 import { AddUserEvent } from '../../../events/users-event'
 import { InvalidUsersField } from './invalid'
 
-describe('addUser', () => {
-  const url = 'http://localhost'
-  const server = initServer(url)
+describe('UsersField.on Nothing', () => {
   const state = InvalidUsersField.ofInput('123')
-  beforeAll(() => server.listen())
-  afterEach(() => server.resetHandlers())
-  afterAll(() => server.close())
 
   it('should not change user field when event is nothing', async () => {
     //arrange
@@ -32,6 +22,15 @@ describe('addUser', () => {
     //assert
     expect(Equal.equals(state, result)).toBe(true)
   })
+})
+
+describe('UsersField.on AddUserEvent', () => {
+  const baseUrl = 'http://localhost'
+  const server = initServer(baseUrl)
+  const state = InvalidUsersField.ofInput('123')
+  beforeAll(() => server.listen())
+  afterEach(() => server.resetHandlers())
+  afterAll(() => server.close())
 
   it('should return valid user field when status 200 with valid body', async () => {
     //arrange
@@ -49,7 +48,7 @@ describe('addUser', () => {
 
   it('should have validate error when status 200 with invalid body', async () => {
     //arrange
-    server.use(rest.get(url + '/api/v1/users/:username', getUser200Invalid))
+    server.use(getUsersByNameHandler(baseUrl)('200 invalid'))
     const event = AddUserEvent.self
     //act
     const result = await pipe(
@@ -68,7 +67,7 @@ describe('addUser', () => {
 
   it('should have unexpected axios error when status 500', async () => {
     //arrange
-    server.use(rest.get(url + '/api/v1/users/:username', getUser500))
+    server.use(getUsersByNameHandler(baseUrl)('500'))
     const event = AddUserEvent.self
     //act
     const result = await pipe(
@@ -85,9 +84,9 @@ describe('addUser', () => {
     }
   })
 
-  it('should have not found error when status 400', async () => {
+  it('should have not found error when status 404', async () => {
     //arrange
-    server.use(rest.get(url + '/api/v1/users/:username', getUser404))
+    server.use(getUsersByNameHandler(baseUrl)('404'))
     const event = AddUserEvent.self
     //act
     const result = await pipe(

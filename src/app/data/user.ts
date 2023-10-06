@@ -3,12 +3,12 @@ import { Either, flow } from 'effect'
 import { NonEmptyReadonlyArray } from 'effect/ReadonlyArray'
 import { ValidateError } from './error/validate-error'
 
-class Administrator extends S.Class<Administrator>()({
+export class Administrator extends S.Class<Administrator>()({
   _tag: S.literal('Administrator'),
   name: S.string,
 }) {}
 
-class Participant extends S.Class<Participant>()({
+export class Participant extends S.Class<Participant>()({
   _tag: S.literal('Participant'),
   name: S.string,
 }) {}

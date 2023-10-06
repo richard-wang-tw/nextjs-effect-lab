@@ -1,7 +1,6 @@
-import { getUser200Once, getUser404 } from '@/msw/resolvers/get-user'
+import { getUsersByNameHandler } from '@/msw/endpoints/get-user-by-name'
 import { initWorker } from '@/msw/worker'
 import { useSetAtom } from 'jotai'
-import { rest } from 'msw'
 import { useEffect } from 'react'
 import { Users } from '.'
 import { InitialUsersField } from '../../../../data/states/add-course-form/users-field/initial'
@@ -23,12 +22,7 @@ describe('<Users />', () => {
   })
 
   beforeEach(() => {
-    cy.mount(
-      <>
-        <Initializer />
-        <Users />
-      </>
-    )
+    cy.mount(<Users />)
   })
 
   afterEach(() => {
@@ -49,14 +43,14 @@ describe('<Users />', () => {
   })
 
   it('should show 2 error message when user not found and no user selected', () => {
-    worker.use(rest.get('/api/v1/users/:username', getUser404))
+    worker.use(getUsersByNameHandler('')('404'))
     cy.get('input').type('richard_w{Enter}')
     cy.get('.error-message').should('have.length', 2)
   })
 
   it('should show 1 error message when user not found and 1 user selected', () => {
-    worker.use(rest.get('/api/v1/users/:username', getUser404))
-    worker.use(rest.get('/api/v1/users/:username', getUser200Once))
+    worker.use(getUsersByNameHandler('')('404'))
+    worker.use(getUsersByNameHandler('')('200 admin once'))
     cy.get('input').type('richard_w{Enter}')
     cy.get('.user-badge')
     cy.get('input').type('richard{Enter}')
