@@ -1,5 +1,5 @@
-import { getUsersByNameHandler } from './endpoints/get-user-by-name'
+import { getUserHandler } from './endpoints/get-user'
 
 export const handlers = (baseUrl: string) => [
-  getUsersByNameHandler(baseUrl)('200 admin'),
+  getUserHandler(baseUrl)('exists user richard_01 to richard_99'),
 ]

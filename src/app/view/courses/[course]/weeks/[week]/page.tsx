@@ -1,9 +1,9 @@
 import { SideMenu } from '@/app/components/side-menu'
 import { WeekView } from '@/app/components/week-view'
 import { FC } from 'react'
+import { Footer } from './components/Footer'
 import { DateAndTime } from './components/date-and-time'
 import { Description } from './components/description'
-import { Footer } from './components/footer'
 import { Lecturer } from './components/lecturer'
 import { Links } from './components/links'
 

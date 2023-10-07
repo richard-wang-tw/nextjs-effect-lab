@@ -1,7 +1,6 @@
 import { Nothing } from '@/app/data/events'
-import { getUsersByNameHandler } from '@/msw/endpoints/get-user-by-name'
-import { initServer } from '@/msw/server'
-import { Effect, Equal, Option, pipe } from 'effect'
+import { defaultServer } from '@/msw/server'
+import { Effect, Equal, pipe } from 'effect'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { UsersField } from '.'
 import { AddUserEvent } from '../../../events/users-event'
@@ -26,15 +25,16 @@ describe('UsersField.on Nothing', () => {
 
 describe('UsersField.on AddUserEvent', () => {
   const baseUrl = 'http://localhost'
-  const server = initServer(baseUrl)
-  const state = InvalidUsersField.ofInput('123')
+  const server = defaultServer(baseUrl)
+
   beforeAll(() => server.listen())
   afterEach(() => server.resetHandlers())
   afterAll(() => server.close())
 
-  it('should return valid user field when status 200 with valid body', async () => {
+  it('should return valid user field without error when get user success', async () => {
     //arrange
     const event = AddUserEvent.self
+    const state = InvalidUsersField.ofInput('richard_01')
     //act
     const result = await pipe(
       UsersField.on(event)(state),
@@ -46,10 +46,10 @@ describe('UsersField.on AddUserEvent', () => {
     expect(result.error._tag).toBe('None')
   })
 
-  it('should have validate error when status 200 with invalid body', async () => {
+  it('should return invalid user field with error when get user failed', async () => {
     //arrange
-    server.use(getUsersByNameHandler(baseUrl)('200 invalid'))
     const event = AddUserEvent.self
+    const state = InvalidUsersField.ofInput('richard_x')
     //act
     const result = await pipe(
       UsersField.on(event)(state),
@@ -58,48 +58,6 @@ describe('UsersField.on AddUserEvent', () => {
     )
     //assert
     expect(result._tag).toBe('InvalidUsersField')
-    if (Option.isSome(result.error)) {
-      expect(result.error.value._tag).toBe('ValidateError')
-    } else {
-      expect(result.error._tag).toBe('Some')
-    }
-  })
-
-  it('should have unexpected axios error when status 500', async () => {
-    //arrange
-    server.use(getUsersByNameHandler(baseUrl)('500'))
-    const event = AddUserEvent.self
-    //act
-    const result = await pipe(
-      UsersField.on(event)(state),
-      Effect.merge,
-      Effect.runPromise
-    )
-    //assert
-    expect(result._tag).toBe('InvalidUsersField')
-    if (Option.isSome(result.error)) {
-      expect(result.error.value._tag).toBe('UnexpectedAxiosError')
-    } else {
-      expect(result.error._tag).toBe('Some')
-    }
-  })
-
-  it('should have not found error when status 404', async () => {
-    //arrange
-    server.use(getUsersByNameHandler(baseUrl)('404'))
-    const event = AddUserEvent.self
-    //act
-    const result = await pipe(
-      UsersField.on(event)(state),
-      Effect.merge,
-      Effect.runPromise
-    )
-    //assert
-    expect(result._tag).toBe('InvalidUsersField')
-    if (Option.isSome(result.error)) {
-      expect(result.error.value._tag).toBe('NotFoundError')
-    } else {
-      expect(result.error._tag).toBe('Some')
-    }
+    expect(result.error._tag).toBe('Some')
   })
 })

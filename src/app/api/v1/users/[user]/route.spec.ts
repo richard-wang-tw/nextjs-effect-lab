@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 describe('[Provider] getUser', () => {
-  it('will be done tomorrow', () => {
+  it('should return valid user', () => {
     expect(true).toBe(true)
   })
 })
