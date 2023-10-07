@@ -3,7 +3,7 @@ import * as S from '@effect/schema/Schema'
 import { isAxiosError } from 'axios'
 import { Data, pipe } from 'effect'
 
-class UnexpectedAxiosError extends S.Class<UnexpectedAxiosError>()({
+export class UnexpectedAxiosError extends S.Class<UnexpectedAxiosError>()({
   _tag: S.literal('UnexpectedAxiosError'),
   error: S.unknown,
 }) {
@@ -11,7 +11,7 @@ class UnexpectedAxiosError extends S.Class<UnexpectedAxiosError>()({
     Data.tagged<UnexpectedAxiosError>('UnexpectedAxiosError')({ error })
 }
 
-class UnexpectedRequestError extends S.Class<UnexpectedRequestError>()({
+export class UnexpectedRequestError extends S.Class<UnexpectedRequestError>()({
   _tag: S.literal('UnexpectedRequestError'),
   error: S.unknown,
 }) {
@@ -19,7 +19,7 @@ class UnexpectedRequestError extends S.Class<UnexpectedRequestError>()({
     Data.tagged<UnexpectedRequestError>('UnexpectedRequestError')({ error })
 }
 
-class NotFoundError extends S.Class<NotFoundError>()({
+export class NotFoundError extends S.Class<NotFoundError>()({
   _tag: S.literal('NotFoundError'),
   error: S.unknown,
 }) {

@@ -4,7 +4,7 @@ import * as Match from '@effect/match'
 import { Effect, Equal, Option, ReadonlyArray, pipe } from 'effect'
 import { isNonEmptyArray } from 'effect/ReadonlyArray'
 
-import { GetUserError, getUser } from '@/service/api/get-user'
+import { GetUserError, getUser } from '@/service/contracts/consumer/get-user'
 import {
   AddUserEvent,
   DeleteUserEvent,

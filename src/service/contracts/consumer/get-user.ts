@@ -6,9 +6,9 @@ import { Effect, pipe } from 'effect'
 
 export type GetUserError = ValidateError | RequestError
 
-export const getUser = (
-  name: string
-): Effect.Effect<never, GetUserError, User> =>
+export type GetUser = (name: string) => Effect.Effect<never, GetUserError, User>
+
+export const getUser: GetUser = (name) =>
   pipe(
     Effect.tryPromise({
       try: () => axios.get(`/api/v1/users/${name}`).then((res) => res.data),
