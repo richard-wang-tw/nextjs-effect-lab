@@ -1,4 +1,4 @@
-import { defaultWorker } from '@/msw/worker'
+import { defaultWorker } from '@/plugins/msw/worker'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { Users } from '.'

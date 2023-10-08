@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { Resolver } from './utils'
 
 const resolvers = {
-  'exists user richard_01 to richard_99': (): Resolver => (req, res, ctx) =>
+  'exists user richard_00 to richard_99': (): Resolver => (req, res, ctx) =>
     /^richard_\d{2}$/.test(req.params.username.toString())
       ? res(
           ctx.status(200),

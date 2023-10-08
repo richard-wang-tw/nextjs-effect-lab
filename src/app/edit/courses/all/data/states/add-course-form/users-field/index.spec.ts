@@ -1,5 +1,5 @@
 import { Nothing } from '@/app/data/events'
-import { defaultServer } from '@/msw/server'
+import { defaultServer } from '@/plugins/msw/server'
 import { Effect, Equal, pipe } from 'effect'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { UsersField } from '.'
