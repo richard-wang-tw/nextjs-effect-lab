@@ -8,13 +8,12 @@ export class EnvError extends S.Class<EnvError>()({
   error: S.string,
   message: S.string,
 }) {
-  static of(error: ParseError) {
-    return new EnvError({
+  static of = (error: ParseError) =>
+    new EnvError({
       _tag: 'EnvError',
       error: String(error),
       message: formatErrors(error.errors),
     })
-  }
 }
 
 export class Env extends S.Class<Env>()({

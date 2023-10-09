@@ -4,7 +4,7 @@ import { Data } from 'effect'
 export class DatabaseUnexpectedError extends S.Class<DatabaseUnexpectedError>()(
   {
     _tag: S.literal('DatabaseUnexpectedError'),
-    error: S.unknown,
+    error: S.string,
     action: S.string,
     model: S.string,
   }

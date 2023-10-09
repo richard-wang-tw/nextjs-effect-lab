@@ -17,7 +17,7 @@ const findOneUser = (name: string) => () =>
     try: () => UserModel.findOne<UserDocument>({ name }).exec(),
     catch: (error) =>
       DatabaseUnexpectedError.of({
-        error: error,
+        error: String(error),
         model: 'UserModel',
         action: 'findOne',
       }),

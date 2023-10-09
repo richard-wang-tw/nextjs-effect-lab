@@ -4,13 +4,13 @@ import { formatErrors } from '@effect/schema/TreeFormatter'
 
 export class ValidateError extends S.Class<ValidateError>()({
   _tag: S.literal('ValidateError'),
-  error: S.unknown,
+  error: S.string,
   message: S.string,
 }) {
   static of(error: ParseError) {
     return new ValidateError({
       _tag: 'ValidateError',
-      error,
+      error: String(error),
       message: formatErrors(error.errors),
     })
   }

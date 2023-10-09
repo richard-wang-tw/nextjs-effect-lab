@@ -76,7 +76,7 @@ describe('GET /api/v1/users/[username]', () => {
   })
   describe('in the case of database connecting failure', () => {
     beforeAll(async () => {
-      vi.stubEnv('DB_URI', 'http://localhost:27018')
+      vi.stubEnv('DB_URI', 'mongodb://localhost:54321')
     })
 
     it('should reply 500', async () => {
@@ -86,7 +86,6 @@ describe('GET /api/v1/users/[username]', () => {
       const params = { params: { username } }
       //act
       const response = await GET(request, params)
-      console.log(await response.json())
       //assert
       expect(response.status).toBe(500)
     })
