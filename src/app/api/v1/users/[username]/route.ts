@@ -1,17 +1,48 @@
-import { UserModel } from '@/app/api/models/user'
+import { matchErrors } from '@/app/api/common/matchErrors'
+import { UserDocument, UserModel } from '@/app/api/models/user'
+import {
+  DatabaseNotFoundError,
+  DatabaseUnexpectedError,
+} from '@/app/data/error/database-error'
 import MongooseEx from '@/plugins/mongoose-ex'
+import { Env } from '@/service/env'
+import { Effect, Either, pipe } from 'effect'
 import { NextResponse } from 'next/server'
 
 interface Route {
   params: { username: string }
 }
-
-export const GET = async (request: Request, route: Route) => {
-  const uri = process.env.DB_URI as string
-  await MongooseEx.connect(uri)
-  const result = await UserModel.findOne({ name: route.params.username })
-  return NextResponse.json({
-    name: result?.name ?? '',
-    _tag: result?.role ?? '',
+const findOneUser = (name: string) => () =>
+  Effect.tryPromise({
+    try: () => UserModel.findOne<UserDocument>({ name }).exec(),
+    catch: (error) =>
+      DatabaseUnexpectedError.of({
+        error: error,
+        model: 'UserModel',
+        action: 'findOne',
+      }),
   })
-}
+
+const validateFounded = Either.fromNullable<
+  UserDocument | null,
+  DatabaseNotFoundError
+>(() =>
+  DatabaseNotFoundError.of({
+    model: 'UserModel',
+    action: 'findOne',
+  })
+)
+
+export const GET = async (_: Request, route: Route): Promise<NextResponse> =>
+  pipe(
+    Env.of(process.env),
+    Effect.flatMap(MongooseEx.connect),
+    Effect.flatMap(findOneUser(route.params.username)),
+    Effect.flatMap(validateFounded),
+    Effect.flatMap(UserDocument.toUser),
+    Effect.match({
+      onFailure: matchErrors,
+      onSuccess: NextResponse.json,
+    }),
+    Effect.runPromise
+  )

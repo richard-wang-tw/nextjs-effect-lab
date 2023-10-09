@@ -28,7 +28,9 @@ export const ErrorMessage: FC<{
     Match.tag('InvalidDateRange', ({ reason }) => (
       <Displayed reason={reason} />
     )),
-    Match.tag('NotFoundError', () => <Displayed reason={'user not found'} />),
+    Match.tag('RequestNotFoundError', () => (
+      <Displayed reason={'user not found'} />
+    )),
     Match.tag('ValidateError', () => (
       <Displayed reason={'something went wrong ... QAQ'} />
     )),

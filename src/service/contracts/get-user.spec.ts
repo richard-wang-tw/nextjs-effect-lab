@@ -1,5 +1,5 @@
 import {
-  NotFoundError,
+  RequestNotFoundError,
   UnexpectedAxiosError,
 } from '@/app/data/error/request-error'
 import { User } from '@/app/data/user'
@@ -50,7 +50,7 @@ describe('GET /api/v1/users/:username', () => {
       //act
       const result = await pipe(getUser(name), Effect.merge, Effect.runPromise)
       //assert
-      expect(S.is(NotFoundError.struct)(result)).toBe(true)
+      expect(S.is(RequestNotFoundError.struct)(result)).toBe(true)
     })
   })
 

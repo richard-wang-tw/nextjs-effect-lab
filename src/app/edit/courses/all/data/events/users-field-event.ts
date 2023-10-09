@@ -1,3 +1,4 @@
+import { Nothing } from '@/app/data/events'
 import { User } from '@/app/data/user'
 import * as S from '@effect/schema/Schema'
 import { Data } from 'effect'
@@ -26,3 +27,9 @@ export class UpdateInputEvent extends S.Class<UpdateInputEvent>()({
     Data.tagged<UpdateInputEvent>('UpdateInputEvent')({ input })
   static is = S.is(UpdateInputEvent.struct)
 }
+
+export type UsersFieldEvent =
+  | AddUserEvent
+  | DeleteUserEvent
+  | UpdateInputEvent
+  | Nothing

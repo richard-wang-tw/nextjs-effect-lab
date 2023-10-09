@@ -9,7 +9,8 @@ import {
   AddUserEvent,
   DeleteUserEvent,
   UpdateInputEvent,
-} from '../../../events/users-event'
+  UsersFieldEvent,
+} from '../../../events/users-field-event'
 import { InitialUsersField } from './initial'
 import { InvalidUsersField } from './invalid'
 import { ValidUsersField } from './valid'
@@ -84,18 +85,19 @@ const onAddUser = (_: AddUserEvent) => (field: UsersField) =>
     })
   )
 
-const on =
-  (event: UpdateInputEvent | DeleteUserEvent | AddUserEvent | Nothing) =>
-  (field: UsersField) => {
-    return pipe(
-      Match.value(event),
-      Match.when(Nothing.is, () => Effect.succeed(field)),
-      Match.when(AddUserEvent.is, (event) => onAddUser(event)(field)),
-      Match.when(DeleteUserEvent.is, (event) => onDeleteUser(event)(field)),
-      Match.when(UpdateInputEvent.is, (event) => onUpdateInput(event)(field)),
-      Match.exhaustive
-    )
-  }
+const onNothing = (_: Nothing) => (field: UsersField) => Effect.succeed(field)
+
+const on: (
+  event: UsersFieldEvent
+) => (field: UsersField) => Effect.Effect<never, never, UsersField> = (event) =>
+  pipe(
+    Match.value(event),
+    Match.when(Nothing.is, onNothing),
+    Match.when(AddUserEvent.is, onAddUser),
+    Match.when(DeleteUserEvent.is, onDeleteUser),
+    Match.when(UpdateInputEvent.is, onUpdateInput),
+    Match.exhaustive
+  )
 
 const init = InitialUsersField.self
 

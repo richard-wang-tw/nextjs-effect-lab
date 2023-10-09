@@ -1,4 +1,7 @@
+import { Env } from '@/service/env'
+import { Effect, pipe } from 'effect'
 import mongoose from 'mongoose'
+import { MongooseExConnectError } from './error'
 declare global {
   var mongoose: any // This must be a `var` and not a `let / const`
 }
@@ -9,7 +12,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null }
 }
 
-const connect = async (uri: string) => {
+const _connect = async (uri: string): Promise<void> => {
   if (cached.conn) {
     return cached.conn
   }
@@ -27,8 +30,14 @@ const connect = async (uri: string) => {
     cached.promise = null
     throw e
   }
-
-  return cached.conn
 }
+
+const connect = (env: Env) =>
+  pipe(
+    Effect.tryPromise({
+      try: () => _connect(env.DB_URI),
+      catch: MongooseExConnectError.of,
+    })
+  )
 
 export default connect

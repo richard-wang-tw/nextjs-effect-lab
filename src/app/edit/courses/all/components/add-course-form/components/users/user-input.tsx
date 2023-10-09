@@ -10,7 +10,7 @@ import { ChangeEvent, FC, KeyboardEvent, MouseEvent } from 'react'
 import {
   AddUserEvent,
   UpdateInputEvent,
-} from '../../../../data/events/users-event'
+} from '../../../../data/events/users-field-event'
 import { UsersField } from '../../../../data/states/add-course-form/users-field'
 import { UsersFieldError } from '../../../../data/states/add-course-form/users-field/errors'
 import { usersFieldAtom } from '../../atoms'

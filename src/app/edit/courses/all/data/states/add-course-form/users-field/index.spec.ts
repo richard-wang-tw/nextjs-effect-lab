@@ -3,7 +3,7 @@ import { defaultServer } from '@/plugins/msw/server'
 import { Effect, Equal, pipe } from 'effect'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { UsersField } from '.'
-import { AddUserEvent } from '../../../events/users-event'
+import { AddUserEvent } from '../../../events/users-field-event'
 import { InvalidUsersField } from './invalid'
 
 describe('UsersField.on Nothing', () => {
@@ -36,11 +36,7 @@ describe('UsersField.on AddUserEvent', () => {
     const event = AddUserEvent.self
     const state = InvalidUsersField.ofInput('richard_01')
     //act
-    const result = await pipe(
-      UsersField.on(event)(state),
-      Effect.merge,
-      Effect.runPromise
-    )
+    const result = await pipe(state, UsersField.on(event), Effect.runPromise)
     //assert
     expect(result._tag).toBe('ValidUsersField')
     expect(result.error._tag).toBe('None')
@@ -51,11 +47,7 @@ describe('UsersField.on AddUserEvent', () => {
     const event = AddUserEvent.self
     const state = InvalidUsersField.ofInput('richard_x')
     //act
-    const result = await pipe(
-      UsersField.on(event)(state),
-      Effect.merge,
-      Effect.runPromise
-    )
+    const result = await pipe(state, UsersField.on(event), Effect.runPromise)
     //assert
     expect(result._tag).toBe('InvalidUsersField')
     expect(result.error._tag).toBe('Some')

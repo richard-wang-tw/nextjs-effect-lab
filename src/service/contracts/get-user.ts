@@ -10,9 +10,11 @@ export type GetUser = (name: string) => Effect.Effect<never, GetUserError, User>
 
 export const getUser: GetUser = (name) =>
   pipe(
-    Effect.tryPromise({
-      try: () => axios.get(`/api/v1/users/${name}`).then((res) => res.data),
-      catch: (error) => RequestError.of(error),
-    }),
+    `/api/v1/users/${name}`,
+    (url) =>
+      Effect.tryPromise({
+        try: () => axios.get(url).then((res) => res.data),
+        catch: RequestError.of('GET')(url),
+      }),
     Effect.flatMap(validateUser)
   )
