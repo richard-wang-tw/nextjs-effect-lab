@@ -1,12 +1,8 @@
 import { RequestError } from '@/app/data/error/request-error'
-import { ValidateError } from '@/app/data/error/validate-error'
-import { User, validateUser } from '@/app/data/user'
+import { validateUser } from '@/app/data/user'
 import axios from 'axios'
 import { Effect, pipe } from 'effect'
-
-export type GetUserError = ValidateError | RequestError
-
-export type GetUser = (name: string) => Effect.Effect<never, GetUserError, User>
+import { GetUser } from '.'
 
 export const getUser: GetUser = (name) =>
   pipe(

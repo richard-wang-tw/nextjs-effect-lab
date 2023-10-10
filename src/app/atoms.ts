@@ -1,3 +1,4 @@
+import { Contracts, contracts } from '@/service/contracts'
 import { atom } from 'jotai'
 import { Constants, Functions, Service } from '../service'
 import { Clock, clock } from '../service/clock'
@@ -12,12 +13,17 @@ export const textsAtom = atom<Texts>(texts)
 
 export const clockAtom = atom<Clock>(clock)
 
+export const contractsAtom = atom<Contracts>(contracts)
+
 export const functionsAtom = atom(
   (get): Functions => ({
     clock: get(clockAtom),
+    contracts: get(contractsAtom),
   }),
-  (_, set, { clock }: Functions) => {
+  (_, set, functions: Functions) => {
+    const { clock, contracts } = functions
     set(clockAtom, clock)
+    set(contractsAtom, contracts)
   }
 )
 
@@ -37,8 +43,9 @@ export const serviceAtom = atom(
     ...get(constantsAtom),
     ...get(functionsAtom),
   }),
-  (_, set, { settings, texts, clock }: Service) => {
+  (_, set, service: Service) => {
+    const { settings, texts, clock, contracts } = service
     set(constantsAtom, { settings, texts })
-    set(functionsAtom, { clock })
+    set(functionsAtom, { clock, contracts })
   }
 )
