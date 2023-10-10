@@ -2,8 +2,8 @@ import { defaultWorker } from '@/plugins/msw/worker'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { Users } from '.'
+import { usersFieldAtom } from '../../../../atoms'
 import { InitialUsersField } from '../../../../data/states/add-course-form/users-field/initial'
-import { usersFieldAtom } from '../../atoms'
 
 const Initializer = () => {
   const setUsers = useSetAtom(usersFieldAtom)

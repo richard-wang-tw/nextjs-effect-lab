@@ -1,11 +1,10 @@
 import { serviceAtom } from '@/app/atoms'
-import { Equal, pipe } from 'effect'
+import { Equal, Option, pipe } from 'effect'
 import { flow } from 'effect/Function'
 import { useAtom, useAtomValue } from 'jotai'
 import { FC } from 'react'
 
 import { DateRangePicker } from '@/app/components/date-range-picker'
-import { doNothing } from '@/utils/doNothing'
 import * as M from '@effect/match'
 import { dateRangeAtom } from '../../../../atoms'
 import { DateRange as DateRangeData } from '../../../../data/states/add-course-form/date-range'
@@ -19,6 +18,9 @@ const Error: FC<{ dateRange: DateRangeData }> = ({ dateRange }) =>
     M.orElse(() => <></>)
   )
 
+const predicateNotChanged = (a: DateRangeData) =>
+  Option.liftPredicate((b: DateRangeData) => !Equal.equals(a, b))
+
 export const DateRange: FC = () => {
   const [dateRange, setDateRange] = useAtom(dateRangeAtom)
   const { clock, texts } = useAtomValue(serviceAtom)
@@ -28,10 +30,13 @@ export const DateRange: FC = () => {
       <Label htmlFor={'date-range-picker'}>{title}</Label>
       <DateRangePicker
         id={'date-range-picker'}
-        onChange={flow(DateRangeData(clock).of, (newDateRange) =>
-          Equal.equals(newDateRange, dateRange)
-            ? doNothing()
-            : setDateRange(newDateRange)
+        onChange={flow(
+          DateRangeData(clock).of,
+          predicateNotChanged(dateRange),
+          Option.match({
+            onNone: () => {},
+            onSome: setDateRange,
+          })
         )}
         placeholder={placeholder}
       />

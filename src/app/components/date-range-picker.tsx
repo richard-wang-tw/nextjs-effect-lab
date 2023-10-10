@@ -30,7 +30,7 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
       format: 'yyyy / mm / dd',
       onChange,
     })
-  })
+  }, [])
 
   return (
     <div ref={pickerRef} className="flex items-center w-full" id={id}>
