@@ -7,16 +7,16 @@ import { FC } from 'react'
 import { usersFieldAtom } from '../../../../atoms'
 import { DeleteUserEvent } from '../../../../data/events/users-field-event'
 import { UsersField } from '../../../../data/states/add-course-form/users-field'
-import { UserInputService } from './user-input'
+import { UsersFieldService } from './user-input'
 
 interface UserBadgeProps {
   user: User
 }
 
-const deleteUser = (service: UserInputService) => (user: User) =>
+const deleteUser = (service: UsersFieldService) => (user: User) =>
   pipe(
     UsersField.on(DeleteUserEvent.of(user)),
-    Effect.provideService(UserInputService.context, service),
+    Effect.provideService(UsersFieldService.context, service),
     Effect.map(service.setField),
     Effect.runPromise
   )

@@ -4,12 +4,12 @@ import { Administrator } from '@/app/data/user'
 import { Effect, Equal, pipe } from 'effect'
 import { describe, expect, it } from 'vitest'
 import { UsersField } from '.'
-import { UserInputService } from '../../../../components/add-course-form/components/users-field/user-input'
+import { UsersFieldService } from '../../../../components/add-course-form/components/users-field/user-input'
 import { AddUserEvent } from '../../../events/users-field-event'
 import { InvalidUsersField } from './invalid'
 
 describe('UsersField.on Nothing', () => {
-  const service = UserInputService.of({
+  const service = UsersFieldService.of({
     getUser: () => Effect.succeed(Administrator.of('richard_01')),
     field: InvalidUsersField.ofInput('richard_x'),
     setField: () => {},
@@ -20,7 +20,7 @@ describe('UsersField.on Nothing', () => {
     //act
     const result = await pipe(
       UsersField.on(event),
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.merge,
       Effect.runPromise
     )
@@ -30,7 +30,7 @@ describe('UsersField.on Nothing', () => {
 })
 
 describe('UsersField.on AddUserEvent', () => {
-  const service = UserInputService.of({
+  const service = UsersFieldService.of({
     getUser: () => Effect.succeed(Administrator.of('richard_01')),
     field: InvalidUsersField.ofInput('richard_01'),
     setField: () => {},
@@ -39,7 +39,7 @@ describe('UsersField.on AddUserEvent', () => {
   it('should return valid user field without error when get user success', async () => {
     //arrange
     const event = AddUserEvent.self
-    const service = UserInputService.of({
+    const service = UsersFieldService.of({
       getUser: () => Effect.succeed(Administrator.of('richard_01')),
       field: InvalidUsersField.ofInput('richard_01'),
       setField: () => {},
@@ -47,7 +47,7 @@ describe('UsersField.on AddUserEvent', () => {
     //act
     const result = await pipe(
       UsersField.on(event),
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.runPromise
     )
     //assert
@@ -63,7 +63,7 @@ describe('UsersField.on AddUserEvent', () => {
       method: 'GET',
       url: '',
     })
-    const service = UserInputService.of({
+    const service = UsersFieldService.of({
       getUser: () => Effect.fail(fakeGetUserError),
       field: InvalidUsersField.ofInput('richard_01'),
       setField: () => {},
@@ -71,7 +71,7 @@ describe('UsersField.on AddUserEvent', () => {
     //act
     const result = await pipe(
       UsersField.on(event),
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.runPromise
     )
     //assert

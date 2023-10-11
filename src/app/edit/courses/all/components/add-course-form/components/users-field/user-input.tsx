@@ -24,29 +24,29 @@ const parseKeyboardEvent = (event: KeyboardEvent<HTMLInputElement>) =>
   )
 
 const onInputKeyDown =
-  (service: UserInputService) => (event: KeyboardEvent<HTMLInputElement>) =>
+  (service: UsersFieldService) => (event: KeyboardEvent<HTMLInputElement>) =>
     pipe(
       parseKeyboardEvent(event),
       UsersField.on,
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.map(service.setField),
       Effect.runPromise
     )
 
 const onInputChange =
-  (service: UserInputService) => (event: ChangeEvent<HTMLInputElement>) =>
+  (service: UsersFieldService) => (event: ChangeEvent<HTMLInputElement>) =>
     pipe(
       UsersField.on(UpdateInputEvent.of(event.target.value)),
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.map(service.setField),
       Effect.runPromise
     )
 
 const onClick =
-  (service: UserInputService) => (event: MouseEvent<HTMLButtonElement>) =>
+  (service: UsersFieldService) => (event: MouseEvent<HTMLButtonElement>) =>
     pipe(
       UsersField.on(AddUserEvent.self),
-      Effect.provideService(UserInputService.context, service),
+      Effect.provideService(UsersFieldService.context, service),
       Effect.map(service.setField),
       Effect.runPromise
     )
@@ -67,15 +67,15 @@ const NoUserSelectedError: FC<{ field: UsersField }> = ({ field }) =>
     M.orElse(() => <></>)
   )
 
-export interface UserInputService {
+export interface UsersFieldService {
   getUser: GetUser
   field: UsersField
   setField: SetAtom<UsersField>
 }
 
-export const UserInputService = {
-  context: Context.Tag<UserInputService>(),
-  of: (service: UserInputService) => service,
+export const UsersFieldService = {
+  context: Context.Tag<UsersFieldService>(),
+  of: (service: UsersFieldService) => service,
 }
 
 export const UserInput: FC<{ id: string }> = ({ id }) => {

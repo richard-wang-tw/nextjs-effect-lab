@@ -5,7 +5,7 @@ import { isNonEmptyArray } from 'effect/ReadonlyArray'
 
 import { GetUserError } from '@/service/contracts'
 import * as M from '@effect/match'
-import { UserInputService } from '../../../../components/add-course-form/components/users-field/user-input'
+import { UsersFieldService } from '../../../../components/add-course-form/components/users-field/user-input'
 import {
   AddUserEvent,
   DeleteUserEvent,
@@ -17,7 +17,7 @@ import { InvalidUsersField } from './invalid'
 import { ValidUsersField } from './valid'
 const onUpdateInput = (event: UpdateInputEvent) =>
   pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.map((service) => service.field),
     Effect.map((field) => {
       const { input } = event
@@ -34,7 +34,7 @@ const onUpdateInput = (event: UpdateInputEvent) =>
 
 const updateError = (error: GetUserError) =>
   pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.map(
       ({ field }): UsersField =>
         pipe(
@@ -56,7 +56,7 @@ const updateError = (error: GetUserError) =>
 
 const addUser = (user: User) =>
   pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.map(({ field }) => field.selected),
     Effect.map((selected) => ReadonlyArray.append(user)(selected)),
     Effect.map((selected) =>
@@ -70,7 +70,7 @@ const addUser = (user: User) =>
 
 const onDeleteUser = (event: DeleteUserEvent) =>
   pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.map((service) => service.field),
     Effect.map(({ selected, input, error }) =>
       pipe(
@@ -87,9 +87,9 @@ const onDeleteUser = (event: DeleteUserEvent) =>
 
 const onAddUser = (
   _: AddUserEvent
-): Effect.Effect<UserInputService, never, UsersField> => {
+): Effect.Effect<UsersFieldService, never, UsersField> => {
   return pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.flatMap(({ getUser, field }) => getUser(field.input)),
     Effect.matchEffect({
       onFailure: updateError,
@@ -100,13 +100,13 @@ const onAddUser = (
 
 const onNothing = (_: Nothing) =>
   pipe(
-    UserInputService.context,
+    UsersFieldService.context,
     Effect.map((service) => service.field)
   )
 
 const on: (
   event: UsersFieldEvent
-) => Effect.Effect<UserInputService, never, UsersField> = (event) =>
+) => Effect.Effect<UsersFieldService, never, UsersField> = (event) =>
   pipe(
     M.value(event),
     M.when(Nothing.is, onNothing),
