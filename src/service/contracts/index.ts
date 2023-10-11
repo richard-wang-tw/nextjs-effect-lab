@@ -11,6 +11,6 @@ export interface Contracts {
   getUser: GetUser
 }
 
-export const contracts = {
-  getUser,
+export const Contracts = {
+  default: { getUser },
 }

@@ -1,7 +1,7 @@
 import { defaultWorker } from '@/plugins/msw/worker'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
-import { Users } from '.'
+import { UsersField } from '.'
 import { usersFieldAtom } from '../../../../atoms'
 import { InitialUsersField } from '../../../../data/states/add-course-form/users-field/initial'
 
@@ -24,7 +24,7 @@ describe('<Users />', () => {
     cy.mount(
       <>
         <Initializer />
-        <Users />
+        <UsersField />
       </>
     )
   })

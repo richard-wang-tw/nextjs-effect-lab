@@ -1,5 +1,5 @@
-import { importSettings } from '@/service/settings'
-import { importTexts } from '@/service/texts'
+import { Settings } from '@/service/settings'
+import { Texts } from '@/service/texts'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
@@ -31,8 +31,8 @@ const NavBar = () => (
 )
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const settings = await importSettings('default')
-  const texts = await importTexts('en')
+  const settings = await Settings.import('default')
+  const texts = await Texts.import('en')
   const constants = { settings, texts }
 
   return (

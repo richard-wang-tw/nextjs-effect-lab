@@ -1,19 +1,17 @@
-import { Contracts, contracts } from '@/service/contracts'
+import { Contracts } from '@/service/contracts'
 import { atom } from 'jotai'
 import { Constants, Functions, Service } from '../service'
-import { Clock, clock } from '../service/clock'
+import { Clock } from '../service/clock'
 import { Settings } from '../service/settings'
-import { settings } from '../service/settings/default'
 import { Texts } from '../service/texts'
-import { texts } from '../service/texts/en'
 
-export const settingsAtom = atom<Settings>(settings)
+export const settingsAtom = atom<Settings>(Settings.default)
 
-export const textsAtom = atom<Texts>(texts)
+export const textsAtom = atom<Texts>(Texts.default)
 
-export const clockAtom = atom<Clock>(clock)
+export const clockAtom = atom<Clock>(Clock.default)
 
-export const contractsAtom = atom<Contracts>(contracts)
+export const contractsAtom = atom<Contracts>(Contracts.default)
 
 export const functionsAtom = atom(
   (get): Functions => ({

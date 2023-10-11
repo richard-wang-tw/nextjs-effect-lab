@@ -27,7 +27,6 @@ const _connect = async (uri: string): Promise<void> => {
 
   try {
     cached.conn = await cached.promise
-    console.log('connected')
   } catch (e) {
     cached.promise = null
     throw e

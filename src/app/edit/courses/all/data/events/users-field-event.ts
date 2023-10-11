@@ -7,7 +7,7 @@ export class AddUserEvent extends S.Class<AddUserEvent>()({
   _tag: S.literal('AddUserEvent'),
 }) {
   static self = new AddUserEvent({ _tag: 'AddUserEvent' })
-  static is = S.is(AddUserEvent)
+  static is = S.is(AddUserEvent.struct)
 }
 
 export class DeleteUserEvent extends S.Class<DeleteUserEvent>()({

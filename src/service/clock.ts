@@ -10,17 +10,25 @@ const now = () => new Date()
 
 const ms = () => now().getTime()
 
-export const clock: Clock = { now, ms }
+const clock: Clock = { now, ms }
 
-export const testClockOf = (ms: number): Clock => ({
+const of = (ms: number): Clock => ({
   ms: () => ms,
   now: () => new Date(ms),
 })
-
-/**
- * Clock.now is `2000/01/01 00:00:00`
- */
-export const testClock: Clock = {
+const testClock: Clock = {
   ms: () => new Date('2000-01-01T00:00:00Z').getTime(),
   now: () => new Date('2000-01-01T00:00:00Z'),
+}
+
+export const Clock = {
+  default: clock,
+  /**
+   * Clock.now is `2000/01/01 00:00:00`
+   */
+  test: testClock,
+  /**
+   * Create a fixed time test clock by ms from `1970/01/01 00:00:00`
+   */
+  of,
 }

@@ -1,4 +1,4 @@
-export const settings = {
+export const defaultSettings = {
   courseName: {
     limit: {
       maxLen: 50,

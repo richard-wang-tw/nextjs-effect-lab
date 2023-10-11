@@ -1,5 +1,5 @@
 import { clockAtom } from '@/app/atoms'
-import { testClock } from '@/service/clock'
+import { Clock } from '@/service/clock'
 import { getContainerEl } from 'cypress/react18'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
@@ -12,7 +12,7 @@ const Initializer = () => {
   const setDateRange = useSetAtom(dateRangeAtom)
   const setClock = useSetAtom(clockAtom)
   useEffect(() => {
-    setClock(testClock)
+    setClock(Clock.test)
     setDateRange(InitialDateRange.self)
   }, [])
 

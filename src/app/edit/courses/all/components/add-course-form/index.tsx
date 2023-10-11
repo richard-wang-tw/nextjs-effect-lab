@@ -8,7 +8,7 @@ import { CourseName } from './components/course-name'
 import { DateRange } from './components/date-range'
 import { Description } from './components/description'
 import { Footer } from './components/footer'
-import { Users } from './components/users'
+import { UsersField } from './components/users-field'
 
 const AddCourseForm: FC = () => {
   const texts = useAtomValue(textsAtom)
@@ -21,7 +21,7 @@ const AddCourseForm: FC = () => {
       <CourseName />
       <DateRange />
       <Description />
-      <Users />
+      <UsersField />
     </SideMenu>
   )
 }

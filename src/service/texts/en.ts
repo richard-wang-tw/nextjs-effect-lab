@@ -1,4 +1,4 @@
-export const texts = {
+export const textsEn = {
   addCourseForm: {
     title: 'Add Course',
     courseName: {

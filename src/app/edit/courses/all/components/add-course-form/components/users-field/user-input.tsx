@@ -1,10 +1,10 @@
-import { constantsAtom } from '@/app/atoms'
+import { constantsAtom, contractsAtom } from '@/app/atoms'
 import { Button } from '@/app/components/button'
 import { Nothing } from '@/app/data/events'
 import { SetAtom } from '@/app/data/utils/hooks'
+import { GetUser } from '@/service/contracts'
 import * as M from '@effect/match'
-import { Effect, Option, pipe } from 'effect'
-import { apply } from 'effect/Function'
+import { Context, Effect, Option, pipe } from 'effect'
 import { useAtom, useAtomValue } from 'jotai'
 import { ChangeEvent, FC, KeyboardEvent, MouseEvent } from 'react'
 import { usersFieldAtom } from '../../../../atoms'
@@ -24,35 +24,30 @@ const parseKeyboardEvent = (event: KeyboardEvent<HTMLInputElement>) =>
   )
 
 const onInputKeyDown =
-  (field: UsersField, setField: SetAtom<UsersField>) =>
-  (event: KeyboardEvent<HTMLInputElement>) =>
+  (service: UserInputService) => (event: KeyboardEvent<HTMLInputElement>) =>
     pipe(
+      parseKeyboardEvent(event),
       UsersField.on,
-      apply(parseKeyboardEvent(event)),
-      apply(field),
-      Effect.map(setField),
+      Effect.provideService(UserInputService.context, service),
+      Effect.map(service.setField),
       Effect.runPromise
     )
 
 const onInputChange =
-  (field: UsersField, setField: SetAtom<UsersField>) =>
-  (event: ChangeEvent<HTMLInputElement>) =>
+  (service: UserInputService) => (event: ChangeEvent<HTMLInputElement>) =>
     pipe(
-      UsersField.on,
-      apply(UpdateInputEvent.of(event.target.value)),
-      apply(field),
-      Effect.map(setField),
+      UsersField.on(UpdateInputEvent.of(event.target.value)),
+      Effect.provideService(UserInputService.context, service),
+      Effect.map(service.setField),
       Effect.runPromise
     )
 
 const onClick =
-  (field: UsersField, setField: SetAtom<UsersField>) =>
-  (event: MouseEvent<HTMLButtonElement>) =>
+  (service: UserInputService) => (event: MouseEvent<HTMLButtonElement>) =>
     pipe(
-      UsersField.on,
-      apply(AddUserEvent.self),
-      apply(field),
-      Effect.map(setField),
+      UsersField.on(AddUserEvent.self),
+      Effect.provideService(UserInputService.context, service),
+      Effect.map(service.setField),
       Effect.runPromise
     )
 
@@ -72,11 +67,23 @@ const NoUserSelectedError: FC<{ field: UsersField }> = ({ field }) =>
     M.orElse(() => <></>)
   )
 
+export interface UserInputService {
+  getUser: GetUser
+  field: UsersField
+  setField: SetAtom<UsersField>
+}
+
+export const UserInputService = {
+  context: Context.Tag<UserInputService>(),
+  of: (service: UserInputService) => service,
+}
+
 export const UserInput: FC<{ id: string }> = ({ id }) => {
   const { texts } = useAtomValue(constantsAtom)
   const { placeholder, addButton } = texts.addCourseForm.users.input
   const [field, setField] = useAtom(usersFieldAtom)
-
+  const { getUser } = useAtomValue(contractsAtom)
+  const service = { field, setField, getUser }
   return (
     <>
       <div className="relative">
@@ -87,12 +94,12 @@ export const UserInput: FC<{ id: string }> = ({ id }) => {
           className="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder={placeholder}
           required
-          onChange={onInputChange(field, setField)}
-          onKeyDown={onInputKeyDown(field, setField)}
+          onChange={onInputChange(service)}
+          onKeyDown={onInputKeyDown(service)}
         />
         <Button
           className="absolute right-1.5 bottom-1.5 px-2 py-1"
-          onClick={onClick(field, setField)}
+          onClick={onClick(service)}
         >
           {addButton.text}
         </Button>

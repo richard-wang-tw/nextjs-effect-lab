@@ -41,8 +41,7 @@ const fromUser = (user: User) =>
   )
 
 export const UserModel: mongoose.Model<UserDocument> =
-  (mongoose.model as unknown as any).User ||
-  mongoose.model<UserDocument>('User', mongooseSchema)
+  mongoose.models.User || mongoose.model<UserDocument>('User', mongooseSchema)
 
 export interface UserDocument {
   role: string

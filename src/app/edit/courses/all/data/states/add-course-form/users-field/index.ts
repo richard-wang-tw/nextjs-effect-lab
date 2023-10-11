@@ -1,11 +1,11 @@
 import { Nothing } from '@/app/data/events'
 import { User } from '@/app/data/user'
-import * as Match from '@effect/match'
 import { Effect, Equal, Option, ReadonlyArray, pipe } from 'effect'
 import { isNonEmptyArray } from 'effect/ReadonlyArray'
 
 import { GetUserError } from '@/service/contracts'
-import { getUser } from '@/service/contracts/get-user'
+import * as M from '@effect/match'
+import { UserInputService } from '../../../../components/add-course-form/components/users-field/user-input'
 import {
   AddUserEvent,
   DeleteUserEvent,
@@ -15,89 +15,105 @@ import {
 import { InitialUsersField } from './initial'
 import { InvalidUsersField } from './invalid'
 import { ValidUsersField } from './valid'
-
-const onUpdateInput =
-  ({ input }: UpdateInputEvent) =>
-  (field: UsersField) => {
-    const { error } = field
-    return pipe(
-      Match.value(field),
-      Match.tag('InitialUsersField', () =>
-        InvalidUsersField.of({
-          error,
-          selected: [],
-          input,
-        })
-      ),
-      Match.orElse((field) => ({
-        ...field,
-        input,
-      })),
-      Effect.succeed
-    )
-  }
-
-const updateError = (error: GetUserError) => (field: UsersField) =>
+const onUpdateInput = (event: UpdateInputEvent) =>
   pipe(
-    Match.value(field),
-    Match.tag('InitialUsersField', () =>
-      InvalidUsersField.of({
-        error: Option.some(error),
-        selected: [],
-        input: field.input,
-      })
-    ),
-    Match.orElse((field) => ({
-      ...field,
-      error: Option.some(error),
-    }))
-  )
-
-const addUser = (user: User) => (state: UsersField) => {
-  const { selected } = state
-  return ValidUsersField.of({
-    selected: ReadonlyArray.append(user)(selected),
-    input: '',
-    error: Option.none(),
-  })
-}
-
-const onDeleteUser = (event: DeleteUserEvent) => (field: UsersField) =>
-  pipe(
-    field.selected as readonly User[],
-    ReadonlyArray.filter((user) => !Equal.equals(user, event.user)),
-    (selected) =>
-      isNonEmptyArray(selected)
-        ? ValidUsersField.of({
-            selected,
-            input: field.input,
-            error: field.error,
-          })
-        : InvalidUsersField.of({ ...field, selected: [] }),
-    Effect.succeed
-  )
-
-const onAddUser = (_: AddUserEvent) => (field: UsersField) =>
-  pipe(
-    getUser(field.input),
-    Effect.match({
-      onFailure: (error) => updateError(error)(field),
-      onSuccess: (user) => addUser(user)(field),
+    UserInputService.context,
+    Effect.map((service) => service.field),
+    Effect.map((field) => {
+      const { input } = event
+      const { error } = field
+      return pipe(
+        M.value(field),
+        M.tag('InitialUsersField', () =>
+          InvalidUsersField.of({ error, selected: [], input })
+        ),
+        M.orElse((field): UsersField => ({ ...field, input }))
+      )
     })
   )
 
-const onNothing = (_: Nothing) => (field: UsersField) => Effect.succeed(field)
+const updateError = (error: GetUserError) =>
+  pipe(
+    UserInputService.context,
+    Effect.map(
+      ({ field }): UsersField =>
+        pipe(
+          M.value(field),
+          M.tag('InitialUsersField', () =>
+            InvalidUsersField.of({
+              error: Option.some(error),
+              selected: [],
+              input: field.input,
+            })
+          ),
+          M.orElse((field) => ({
+            ...field,
+            error: Option.some(error),
+          }))
+        )
+    )
+  )
+
+const addUser = (user: User) =>
+  pipe(
+    UserInputService.context,
+    Effect.map(({ field }) => field.selected),
+    Effect.map((selected) => ReadonlyArray.append(user)(selected)),
+    Effect.map((selected) =>
+      ValidUsersField.of({
+        selected,
+        input: '',
+        error: Option.none(),
+      })
+    )
+  )
+
+const onDeleteUser = (event: DeleteUserEvent) =>
+  pipe(
+    UserInputService.context,
+    Effect.map((service) => service.field),
+    Effect.map(({ selected, input, error }) =>
+      pipe(
+        selected as readonly User[],
+        ReadonlyArray.filter((user) => !Equal.equals(user, event.user)),
+        Option.liftPredicate(isNonEmptyArray),
+        Option.match({
+          onNone: () => InvalidUsersField.of({ input, error, selected: [] }),
+          onSome: (selected) => ValidUsersField.of({ selected, input, error }),
+        })
+      )
+    )
+  )
+
+const onAddUser = (
+  _: AddUserEvent
+): Effect.Effect<UserInputService, never, UsersField> => {
+  return pipe(
+    UserInputService.context,
+    Effect.flatMap(({ getUser, field }) => getUser(field.input)),
+    Effect.matchEffect({
+      onFailure: updateError,
+      onSuccess: addUser,
+    })
+  )
+}
+
+const onNothing = (_: Nothing) =>
+  pipe(
+    UserInputService.context,
+    Effect.map((service) => service.field)
+  )
 
 const on: (
   event: UsersFieldEvent
-) => (field: UsersField) => Effect.Effect<never, never, UsersField> = (event) =>
+) => Effect.Effect<UserInputService, never, UsersField> = (event) =>
   pipe(
-    Match.value(event),
-    Match.when(Nothing.is, onNothing),
-    Match.when(AddUserEvent.is, onAddUser),
-    Match.when(DeleteUserEvent.is, onDeleteUser),
-    Match.when(UpdateInputEvent.is, onUpdateInput),
-    Match.exhaustive
+    M.value(event),
+    M.when(Nothing.is, onNothing),
+    M.when(AddUserEvent.is, onAddUser),
+    M.when(DeleteUserEvent.is, onDeleteUser),
+    M.when(UpdateInputEvent.is, onUpdateInput),
+    M.exhaustive
   )
 
 const init = InitialUsersField.self
