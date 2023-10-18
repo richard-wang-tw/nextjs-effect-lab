@@ -4,9 +4,9 @@ import axios from 'axios'
 import { Effect, pipe } from 'effect'
 import { GetUser } from '.'
 
-export const getUser: GetUser = (name) =>
+export const getUser: GetUser = (base) => (name) =>
   pipe(
-    `/api/v1/users/${name}`,
+    `${base}/api/v1/users/${name}`,
     (url) =>
       Effect.tryPromise({
         try: () => axios.get(url).then((res) => res.data),

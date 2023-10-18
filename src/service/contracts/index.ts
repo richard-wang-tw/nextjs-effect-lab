@@ -4,7 +4,9 @@ import { User } from '@/app/data/user'
 import { Effect } from 'effect'
 import { getUser } from './get-user'
 
-export type GetUser = (name: string) => Effect.Effect<never, GetUserError, User>
+export type GetUser = (
+  base: string
+) => (name: string) => Effect.Effect<never, GetUserError, User>
 export type GetUserError = ValidateError | RequestError
 
 export interface Contracts {

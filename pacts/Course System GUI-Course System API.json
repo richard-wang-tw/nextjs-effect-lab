@@ -1,0 +1,129 @@
+{
+  "consumer": {
+    "name": "Course System GUI"
+  },
+  "interactions": [
+    {
+      "description": "a request with user name richard_01",
+      "providerStates": [
+        {
+          "name": "failed to connect to database"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_01"
+      },
+      "response": {
+        "status": 500
+      }
+    },
+    {
+      "description": "a request with user name richard_x",
+      "providerStates": [
+        {
+          "name": "failed to connect to database"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_x"
+      },
+      "response": {
+        "status": 500
+      }
+    },
+    {
+      "description": "a request with user name richard_01",
+      "providerStates": [
+        {
+          "name": "user list including richard_01 to richard_99"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_01"
+      },
+      "response": {
+        "body": {
+          "_tag": "Administrator",
+          "name": "richard_01"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request with user name richard_x",
+      "providerStates": [
+        {
+          "name": "user list including richard_01 to richard_99"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_x"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "a request with user name richard_01",
+      "providerStates": [
+        {
+          "name": "user list including richard_01 to richard_99"
+        },
+        {
+          "name": "user list including richard_01 to richard_99"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_01"
+      },
+      "response": {
+        "body": {
+          "_tag": "Administrator",
+          "name": "richard_01"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request with user name richard_x",
+      "providerStates": [
+        {
+          "name": "when failed to connect to database"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/users/richard_x"
+      },
+      "response": {
+        "status": 500
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.1.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.9",
+      "models": "1.1.11"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "Course System API"
+  }
+}

@@ -18,7 +18,7 @@ import {
 } from 'vitest'
 import { getUser } from './get-user'
 
-describe('GET /api/v1/users/:username', () => {
+describe('GET /api/v1/users/:username ', () => {
   const baseUrl = 'http://localhost'
   const server = setupServer()
   beforeAll(() => server.listen())
@@ -35,7 +35,7 @@ describe('GET /api/v1/users/:username', () => {
       const username = 'richard_01'
       //act
       const result = await pipe(
-        getUser(username),
+        getUser('')(username),
         Effect.merge,
         Effect.runPromise
       )
@@ -48,7 +48,11 @@ describe('GET /api/v1/users/:username', () => {
       //arrange
       const name = 'richard_x'
       //act
-      const result = await pipe(getUser(name), Effect.merge, Effect.runPromise)
+      const result = await pipe(
+        getUser('')(name),
+        Effect.merge,
+        Effect.runPromise
+      )
       //assert
       expect(S.is(RequestNotFoundError.struct)(result)).toBe(true)
     })
@@ -59,7 +63,11 @@ describe('GET /api/v1/users/:username', () => {
     server.use(getUserHandler(baseUrl)('database connection is broken'))
     const name = 'richard_01'
     //act
-    const result = await pipe(getUser(name), Effect.merge, Effect.runPromise)
+    const result = await pipe(
+      getUser('')(name),
+      Effect.merge,
+      Effect.runPromise
+    )
     //assert
     expect(S.is(UnexpectedAxiosError.struct)(result)).toBe(true)
   })
